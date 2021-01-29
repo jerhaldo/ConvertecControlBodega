@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7328012e10a742549e5f0e6ed054fdfc" Name="Diagram1" ZoomLevel="52">
+        <EntityTypeShape EntityType="ConvertecBodegaModel.Imagen_Producto" Width="1.5" PointX="8.25" PointY="7.75" />
+        <EntityTypeShape EntityType="ConvertecBodegaModel.Ingreso_Prod" Width="1.5" PointX="3" PointY="5.5" />
+        <EntityTypeShape EntityType="ConvertecBodegaModel.Marca" Width="1.5" PointX="0.75" PointY="3" />
+        <EntityTypeShape EntityType="ConvertecBodegaModel.Movimiento" Width="1.5" PointX="8.25" PointY="4.25" />
+        <EntityTypeShape EntityType="ConvertecBodegaModel.Producto" Width="1.5" PointX="6" PointY="4.75" />
+        <EntityTypeShape EntityType="ConvertecBodegaModel.Proveedor" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="ConvertecBodegaModel.Salida_Prod" Width="1.5" PointX="10.5" PointY="4.625" />
+        <EntityTypeShape EntityType="ConvertecBodegaModel.Trabajador" Width="1.5" PointX="8.25" PointY="0.75" />
+        <AssociationConnector Association="ConvertecBodegaModel.FK_Imagen_Producto_Producto" />
+        <AssociationConnector Association="ConvertecBodegaModel.FK_Ingreso_Prod_Marca" />
+        <AssociationConnector Association="ConvertecBodegaModel.FK_Ingreso_Prod_Movimiento" />
+        <AssociationConnector Association="ConvertecBodegaModel.FK_Ingreso_Prod_Proveedor" />
+        <AssociationConnector Association="ConvertecBodegaModel.FK_Producto_Marca" />
+        <AssociationConnector Association="ConvertecBodegaModel.FK_Movimiento_Producto" />
+        <AssociationConnector Association="ConvertecBodegaModel.FK_Salida_Prod_Movimiento" />
+        <AssociationConnector Association="ConvertecBodegaModel.FK_Producto_Proveedor" />
+        <AssociationConnector Association="ConvertecBodegaModel.FK_Salida_Prod_Trabajador" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

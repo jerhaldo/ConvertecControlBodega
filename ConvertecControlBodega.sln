@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertecControlBodega", "ConvertecControlBodega\ConvertecControlBodega.csproj", "{DFFC2FF5-4838-46A8-981B-C59FD05B8E1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFFC2FF5-4838-46A8-981B-C59FD05B8E1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFFC2FF5-4838-46A8-981B-C59FD05B8E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFFC2FF5-4838-46A8-981B-C59FD05B8E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFFC2FF5-4838-46A8-981B-C59FD05B8E1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9272D65F-F6C2-46E3-B698-3F15FABF8B5E}
+	EndGlobalSection
+EndGlobal
