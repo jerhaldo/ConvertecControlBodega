@@ -1,12 +1,6 @@
 ﻿using ConvertecControlBodega.Business;
 using ConvertecControlBodega.Views;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ConvertecControlBodega
@@ -25,7 +19,7 @@ namespace ConvertecControlBodega
         }
 
         void PopulateData()
-        {   
+        {
 
             dataGridViewSalidas.DataSource = MovimientoBusiness.GetMovimientos();
 
@@ -40,6 +34,11 @@ namespace ConvertecControlBodega
         {
             ConfirmacionSalida formSalida = new ConfirmacionSalida();
             formSalida.ShowDialog();
+        }
+
+        private void btnIngreso_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

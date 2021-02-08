@@ -12,6 +12,23 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +49,34 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ConvertecControlBodega.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>03F6E918840335401D1A7422F29AF71007929F48</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ConvertecControlBodega_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -63,6 +108,12 @@
     </Compile>
     <Compile Include="Views\ConfirmacionSalida.Designer.cs">
       <DependentUpon>ConfirmacionSalida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormSalida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormSalida.Designer.cs">
+      <DependentUpon>FormSalida.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Principal.cs">
       <SubType>Form</SubType>
@@ -114,6 +165,9 @@
     <EmbeddedResource Include="Views\ConfirmacionSalida.resx">
       <DependentUpon>ConfirmacionSalida.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormSalida.resx">
+      <DependentUpon>FormSalida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,10 +184,12 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BodegaModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ConvertecControlBodega_TemporaryKey.pfx" />
     <None Include="Model\BodegaModel.edmx.diagram">
       <DependentUpon>BodegaModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\ConvertecControlBodega.Model.Ingreso_Prod.datasource" />
     <None Include="Properties\DataSources\ConvertecControlBodega.Model.Marca.datasource" />
     <None Include="Properties\DataSources\ConvertecControlBodega.Model.MovSalidasDataGridDTO.datasource" />
@@ -153,18 +209,56 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\imgProductos\AMPERÍMETRO ANÁLAOGO DC +-100A 50mV %282%29.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\imgProductos\AMPERÍMETRO ANÁLOGO DC 100A 50mV GR96 %281%29.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\imgProductos\AMPERÍMETRO ANÁLOGO DC 50A 50mV GR96 240º %281%29.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\imgProductos\CAPACITOR ELECTROLÍTICO 33.000 uF 100V.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\imgProductos\CONTACTOR GLP1-D4011 24VCC.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\imgProductos\DISIPASOR MSN 180.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\imgProductos\WB3U414U01 %280-500V AC%29.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\logos\739aca6e-bcbd-47ca-97ef-136bc7f406a1.png" />
     <Content Include="Assets\logos\b0fd0ba3-6f9b-4370-bb2b-e4c9f8aa40bd.png" />
     <Content Include="Assets\logos\convertec_icon.png" />
     <Content Include="Assets\logos\convertec_icon_bw.png" />
-    <Content Include="Assets\logos\favicon.ico" />
-    <Content Include="Assets\logos\image-unavailable.png" />
-    <Content Include="Assets\logos\image-unavailable_650-350.png" />
+    <Content Include="Assets\logos\favicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\logos\image-unavailable.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\logos\image-unavailable_650-350.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\logos\imageedit_5_9066887911.png" />
     <Content Include="Assets\logos\logo - copia.png" />
     <Content Include="Assets\logos\logo%402x.png" />
@@ -172,6 +266,7 @@
     <Content Include="Assets\logos\logo_completo.jpg" />
     <Content Include="Assets\logos\logo_completo.png" />
     <Content Include="Assets\logos\logo_completo_bw.png" />
+    <Content Include="favicon.ico" />
     <Content Include="Model\BodegaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BodegaModel.edmx</DependentUpon>
