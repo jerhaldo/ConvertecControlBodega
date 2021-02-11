@@ -130,8 +130,8 @@ namespace ConvertecControlBodega
             this.dataGridViewSalidas.ReadOnly = true;
             this.dataGridViewSalidas.RowHeadersWidth = 51;
             this.dataGridViewSalidas.RowTemplate.Height = 24;
-            this.dataGridViewSalidas.Size = new System.Drawing.Size(978, 304);
-            this.dataGridViewSalidas.TabIndex = 1;
+            this.dataGridViewSalidas.Size = new System.Drawing.Size(978, 306);
+            this.dataGridViewSalidas.TabIndex = 0;
             // 
             // timer1
             // 
@@ -146,7 +146,7 @@ namespace ConvertecControlBodega
             this.splitContainer1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.splitContainer1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 30);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 28);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -164,7 +164,7 @@ namespace ConvertecControlBodega
             // 
             this.splitContainer1.Panel2.CausesValidation = false;
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(982, 753);
+            this.splitContainer1.Size = new System.Drawing.Size(982, 755);
             this.splitContainer1.SplitterDistance = 53;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 1;
@@ -221,8 +221,8 @@ namespace ConvertecControlBodega
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer2.Size = new System.Drawing.Size(978, 698);
-            this.splitContainer2.SplitterDistance = 352;
+            this.splitContainer2.Size = new System.Drawing.Size(978, 702);
+            this.splitContainer2.SplitterDistance = 354;
             this.splitContainer2.SplitterWidth = 2;
             this.splitContainer2.TabIndex = 2;
             // 
@@ -247,7 +247,7 @@ namespace ConvertecControlBodega
             // 
             this.splitContainer3.Panel2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.splitContainer3.Panel2.Controls.Add(this.dataGridViewSalidas);
-            this.splitContainer3.Size = new System.Drawing.Size(978, 355);
+            this.splitContainer3.Size = new System.Drawing.Size(978, 357);
             this.splitContainer3.SplitterDistance = 49;
             this.splitContainer3.SplitterWidth = 2;
             this.splitContainer3.TabIndex = 2;
@@ -287,7 +287,7 @@ namespace ConvertecControlBodega
             // 
             this.splitContainer4.Panel2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.splitContainer4.Panel2.Controls.Add(this.dataGridViewIngresos);
-            this.splitContainer4.Size = new System.Drawing.Size(978, 350);
+            this.splitContainer4.Size = new System.Drawing.Size(978, 354);
             this.splitContainer4.SplitterDistance = 47;
             this.splitContainer4.SplitterWidth = 2;
             this.splitContainer4.TabIndex = 1;
@@ -320,7 +320,7 @@ namespace ConvertecControlBodega
             this.dataGridViewIngresos.ReadOnly = true;
             this.dataGridViewIngresos.RowHeadersWidth = 51;
             this.dataGridViewIngresos.RowTemplate.Height = 24;
-            this.dataGridViewIngresos.Size = new System.Drawing.Size(958, 293);
+            this.dataGridViewIngresos.Size = new System.Drawing.Size(958, 299);
             this.dataGridViewIngresos.TabIndex = 0;
             // 
             // menuStrip1
@@ -331,20 +331,20 @@ namespace ConvertecControlBodega
             this.opcion2ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(982, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(982, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // opción1ToolStripMenuItem
             // 
             this.opción1ToolStripMenuItem.Name = "opción1ToolStripMenuItem";
-            this.opción1ToolStripMenuItem.Size = new System.Drawing.Size(83, 26);
+            this.opción1ToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
             this.opción1ToolStripMenuItem.Text = "Opción 1";
             // 
             // opcion2ToolStripMenuItem
             // 
             this.opcion2ToolStripMenuItem.Name = "opcion2ToolStripMenuItem";
-            this.opcion2ToolStripMenuItem.Size = new System.Drawing.Size(83, 26);
+            this.opcion2ToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
             this.opcion2ToolStripMenuItem.Text = "Opcion 2";
             // 
             // idmovDataGridViewTextBoxColumn
@@ -456,6 +456,7 @@ namespace ConvertecControlBodega
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control de Bodega Convertec - Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.reloadTables);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalidas)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);

@@ -164,20 +164,33 @@ namespace ConvertecControlBodega.Business
             }
         }
 
-        public static ProdSalida AddToList(int id_prod, string ot, double cantidad, string obs_mov, int id_trabajador, int folio)
+        public static void InsertSalida(List<ProdSalida> prodSalList)
         {
-            var data = new ProdSalida {
-                id_producto = id_prod,
-                fecha_mov = System.DateTime.Now,
-                ot = ot,
-                cantidad = cantidad,
-                obs_mov = obs_mov,
-                id_trabajador = id_trabajador,
-                folio = folio
-            };
+            ConvertecBodegaEntities db = new ConvertecBodegaEntities();
+            foreach (ProdSalida prodsalida in prodSalList)
+            {
+                Movimiento mov = new Movimiento
+                {
+                    id_producto = prodsalida.id_producto,
+                    fecha_mov = prodsalida.fecha_mov,
+                    cantidad = prodsalida.cantidad,
+                    ot = prodsalida.ot,
+                    obs_mov = prodsalida.obs_mov
+                };
 
-            return data;
+                db.Movimiento.Add(mov);
+                db.SaveChanges();
+
+                Salida_Prod pd = new Salida_Prod
+                {
+                    id_mov = mov.id_mov,
+                    id_trabajador = prodsalida.id_trabajador,
+                    folio = prodsalida.folio
+                };
+
+                db.Salida_Prod.Add(pd);
+                db.SaveChanges();
+            }
         }
-
     }
 }

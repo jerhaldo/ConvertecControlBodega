@@ -20,7 +20,6 @@ namespace ConvertecControlBodega
 
         void PopulateData()
         {
-
             dataGridViewSalidas.DataSource = MovimientoBusiness.GetMovimientos();
 
         }
@@ -32,13 +31,21 @@ namespace ConvertecControlBodega
 
         private void btnSalida_Click(object sender, EventArgs e)
         {
-            ConfirmacionSalida formSalida = new ConfirmacionSalida();
-            formSalida.ShowDialog();
+            IngresoTrabajdor ingTrabajador = new IngresoTrabajdor();
+            ingTrabajador.ShowDialog();
         }
 
         private void btnIngreso_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void reloadTables(object sender, EventArgs e)
+        {
+
+            PopulateData();
+            Console.WriteLine("TESTING");
+            //dataGridViewSalidas.Refresh();
         }
     }
 }

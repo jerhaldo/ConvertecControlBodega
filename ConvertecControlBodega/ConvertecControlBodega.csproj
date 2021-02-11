@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -103,11 +103,11 @@
   <ItemGroup>
     <Compile Include="Business\MovimientoBusiness.cs" />
     <Compile Include="Model\MovimientosDTO.cs" />
-    <Compile Include="Views\ConfirmacionSalida.cs">
+    <Compile Include="Views\IngresoTrabajdor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ConfirmacionSalida.Designer.cs">
-      <DependentUpon>ConfirmacionSalida.cs</DependentUpon>
+    <Compile Include="Views\IngresoTrabajdor.Designer.cs">
+      <DependentUpon>IngresoTrabajdor.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FormSalida.cs">
       <SubType>Form</SubType>
@@ -162,8 +162,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Views\ConfirmacionSalida.resx">
-      <DependentUpon>ConfirmacionSalida.cs</DependentUpon>
+    <EmbeddedResource Include="Views\IngresoTrabajdor.resx">
+      <DependentUpon>IngresoTrabajdor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormSalida.resx">
       <DependentUpon>FormSalida.cs</DependentUpon>

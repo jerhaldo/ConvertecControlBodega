@@ -1,7 +1,7 @@
 ﻿
 namespace ConvertecControlBodega.Views
 {
-    partial class ConfirmacionSalida
+    partial class IngresoTrabajdor
     {
         /// <summary>
         /// Required designer variable.
@@ -29,14 +29,14 @@ namespace ConvertecControlBodega.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfirmacionSalida));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IngresoTrabajdor));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnConfirmar = new System.Windows.Forms.Button();
             this.txtOt = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.lblOt = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
-            this.btnConfirmar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +56,38 @@ namespace ConvertecControlBodega.Views
             this.panel1.Size = new System.Drawing.Size(590, 270);
             this.panel1.TabIndex = 0;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCancelar.BackColor = System.Drawing.Color.LawnGreen;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnCancelar.Location = new System.Drawing.Point(10, 215);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(10);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(125, 45);
+            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
+            // btnConfirmar
+            // 
+            this.btnConfirmar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnConfirmar.BackColor = System.Drawing.Color.LawnGreen;
+            this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmar.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnConfirmar.Location = new System.Drawing.Point(455, 215);
+            this.btnConfirmar.Margin = new System.Windows.Forms.Padding(10);
+            this.btnConfirmar.Name = "btnConfirmar";
+            this.btnConfirmar.Size = new System.Drawing.Size(125, 45);
+            this.btnConfirmar.TabIndex = 3;
+            this.btnConfirmar.Text = "Confirmar";
+            this.btnConfirmar.UseVisualStyleBackColor = false;
+            this.btnConfirmar.Click += new System.EventHandler(this.BtnConfirmar_Click);
+            // 
             // txtOt
             // 
             this.txtOt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -68,7 +100,7 @@ namespace ConvertecControlBodega.Views
             this.txtOt.Name = "txtOt";
             this.txtOt.Size = new System.Drawing.Size(262, 28);
             this.txtOt.TabIndex = 2;
-            this.txtOt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterKeydown);
+            this.txtOt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NextFocus);
             // 
             // txtId
             // 
@@ -78,13 +110,13 @@ namespace ConvertecControlBodega.Views
             this.txtId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtId.Location = new System.Drawing.Point(199, 43);
-            this.txtId.MaxLength = 9;
+            this.txtId.MaxLength = 10;
             this.txtId.Name = "txtId";
             this.txtId.ShortcutsEnabled = false;
             this.txtId.Size = new System.Drawing.Size(262, 28);
             this.txtId.TabIndex = 1;
-            this.txtId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nextFocus);
-            this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.checkNumber);
+            this.txtId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NextFocus);
+            this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckNumber);
             // 
             // lblOt
             // 
@@ -106,43 +138,11 @@ namespace ConvertecControlBodega.Views
             this.lblId.AutoSize = true;
             this.lblId.Location = new System.Drawing.Point(117, 43);
             this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(56, 21);
+            this.lblId.Size = new System.Drawing.Size(33, 21);
             this.lblId.TabIndex = 0;
-            this.lblId.Text = "ID: (*)";
+            this.lblId.Text = "ID:";
             // 
-            // btnConfirmar
-            // 
-            this.btnConfirmar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfirmar.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirmar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmar.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnConfirmar.Location = new System.Drawing.Point(455, 215);
-            this.btnConfirmar.Margin = new System.Windows.Forms.Padding(10);
-            this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(125, 45);
-            this.btnConfirmar.TabIndex = 4;
-            this.btnConfirmar.Text = "Confirmar";
-            this.btnConfirmar.UseVisualStyleBackColor = false;
-            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancelar.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnCancelar.Location = new System.Drawing.Point(10, 215);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(10);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(125, 45);
-            this.btnCancelar.TabIndex = 5;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // ConfirmacionSalida
+            // IngresoTrabajdor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -153,7 +153,7 @@ namespace ConvertecControlBodega.Views
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(630, 320);
-            this.Name = "ConfirmacionSalida";
+            this.Name = "IngresoTrabajdor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Confirmar datos de Salida";
             this.panel1.ResumeLayout(false);
