@@ -1,7 +1,7 @@
 ﻿
 namespace ConvertecControlBodega.Views
 {
-    partial class IngresoTrabajdor
+    partial class IngresoTrabajador
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace ConvertecControlBodega.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IngresoTrabajdor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IngresoTrabajador));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();

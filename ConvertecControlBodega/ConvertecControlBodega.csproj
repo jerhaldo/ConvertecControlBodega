@@ -103,11 +103,17 @@
   <ItemGroup>
     <Compile Include="Business\MovimientoBusiness.cs" />
     <Compile Include="Model\MovimientosDTO.cs" />
-    <Compile Include="Views\IngresoTrabajdor.cs">
+    <Compile Include="Views\FormDisplayProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\IngresoTrabajdor.Designer.cs">
-      <DependentUpon>IngresoTrabajdor.cs</DependentUpon>
+    <Compile Include="Views\FormDisplayProducto.Designer.cs">
+      <DependentUpon>FormDisplayProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IngresoTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\IngresoTrabajador.Designer.cs">
+      <DependentUpon>IngresoTrabajador.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FormSalida.cs">
       <SubType>Form</SubType>
@@ -162,8 +168,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Views\IngresoTrabajdor.resx">
-      <DependentUpon>IngresoTrabajdor.cs</DependentUpon>
+    <EmbeddedResource Include="Views\FormDisplayProducto.resx">
+      <DependentUpon>FormDisplayProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\IngresoTrabajador.resx">
+      <DependentUpon>IngresoTrabajador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormSalida.resx">
       <DependentUpon>FormSalida.cs</DependentUpon>

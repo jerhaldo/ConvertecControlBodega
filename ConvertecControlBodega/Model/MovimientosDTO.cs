@@ -4,7 +4,6 @@ namespace ConvertecControlBodega.Model
 {
     class MovSalidasDataGridDTO
     {
-        public long id_mov { get; set; }
         public Nullable<long> cod_bodega { get; set; }
         public string descripcion { get; set; }
         public double cantidad { get; set; }
@@ -46,6 +45,7 @@ namespace ConvertecControlBodega.Model
         public string obs { get; set; }
         public string image { get; set; }
         public int id_producto { get; set; }
+        public double stock { get; set; }
     }
 
     class ProdSalida

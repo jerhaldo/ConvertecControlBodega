@@ -30,10 +30,10 @@ namespace ConvertecControlBodega.Views
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSalida));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.lblCant = new System.Windows.Forms.Label();
             this.lblObs = new System.Windows.Forms.Label();
@@ -59,6 +59,7 @@ namespace ConvertecControlBodega.Views
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tblFormulario = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxProducto = new System.Windows.Forms.GroupBox();
+            this.btnConfimar = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblPartePlano = new System.Windows.Forms.Label();
@@ -74,7 +75,8 @@ namespace ConvertecControlBodega.Views
             this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha_mov = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.obs_mov = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnConfimar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblStock = new System.Windows.Forms.Label();
             this.groupBoxParametros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -248,7 +250,7 @@ namespace ConvertecControlBodega.Views
             // 
             this.lblPar.AutoSize = true;
             this.lblPar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPar.Location = new System.Drawing.Point(23, 53);
+            this.lblPar.Location = new System.Drawing.Point(23, 49);
             this.lblPar.Margin = new System.Windows.Forms.Padding(3);
             this.lblPar.Name = "lblPar";
             this.lblPar.Size = new System.Drawing.Size(106, 19);
@@ -466,6 +468,17 @@ namespace ConvertecControlBodega.Views
             this.groupBoxProducto.TabStop = false;
             this.groupBoxProducto.Text = "Descripción Producto";
             // 
+            // btnConfimar
+            // 
+            this.btnConfimar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnConfimar.Location = new System.Drawing.Point(333, 301);
+            this.btnConfimar.Name = "btnConfimar";
+            this.btnConfimar.Size = new System.Drawing.Size(101, 31);
+            this.btnConfimar.TabIndex = 4;
+            this.btnConfimar.Text = "Confirmar";
+            this.btnConfimar.UseVisualStyleBackColor = true;
+            this.btnConfimar.Click += new System.EventHandler(this.BtnConfirmar_Click);
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
@@ -477,13 +490,16 @@ namespace ConvertecControlBodega.Views
             this.tableLayoutPanel1.Controls.Add(this.lblPar, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblDescripcion, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblPartePlano, 2, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(333, 89);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblStock, 2, 2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(333, 41);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(10);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(595, 100);
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(595, 141);
             this.tableLayoutPanel1.TabIndex = 20;
             // 
             // lblDescripcion
@@ -500,7 +516,7 @@ namespace ConvertecControlBodega.Views
             // 
             this.lblPartePlano.AutoSize = true;
             this.lblPartePlano.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPartePlano.Location = new System.Drawing.Point(141, 53);
+            this.lblPartePlano.Location = new System.Drawing.Point(141, 49);
             this.lblPartePlano.Margin = new System.Windows.Forms.Padding(3);
             this.lblPartePlano.Name = "lblPartePlano";
             this.lblPartePlano.Size = new System.Drawing.Size(0, 21);
@@ -571,18 +587,18 @@ namespace ConvertecControlBodega.Views
             // 
             // dataGridViewProdSalientes
             // 
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridViewProdSalientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridViewProdSalientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewProdSalientes.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dataGridViewProdSalientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewProdSalientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProdSalientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewProdSalientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewProdSalientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_producto,
@@ -591,28 +607,28 @@ namespace ConvertecControlBodega.Views
             this.cantidad,
             this.fecha_mov,
             this.obs_mov});
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewProdSalientes.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewProdSalientes.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewProdSalientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewProdSalientes.GridColor = System.Drawing.SystemColors.ButtonShadow;
             this.dataGridViewProdSalientes.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewProdSalientes.Margin = new System.Windows.Forms.Padding(8);
             this.dataGridViewProdSalientes.Name = "dataGridViewProdSalientes";
             this.dataGridViewProdSalientes.ReadOnly = true;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewProdSalientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProdSalientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewProdSalientes.RowHeadersVisible = false;
             this.dataGridViewProdSalientes.RowHeadersWidth = 51;
             this.dataGridViewProdSalientes.RowTemplate.Height = 40;
@@ -629,7 +645,7 @@ namespace ConvertecControlBodega.Views
             this.id_producto.Name = "id_producto";
             this.id_producto.ReadOnly = true;
             this.id_producto.Visible = false;
-            this.id_producto.Width = 125;
+            this.id_producto.Width = 32;
             // 
             // cod_bodega
             // 
@@ -642,12 +658,11 @@ namespace ConvertecControlBodega.Views
             // 
             // nombre_prod
             // 
-            this.nombre_prod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nombre_prod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nombre_prod.HeaderText = "Descripción";
             this.nombre_prod.MinimumWidth = 6;
             this.nombre_prod.Name = "nombre_prod";
             this.nombre_prod.ReadOnly = true;
-            this.nombre_prod.Width = 136;
             // 
             // cantidad
             // 
@@ -669,23 +684,32 @@ namespace ConvertecControlBodega.Views
             // 
             // obs_mov
             // 
-            this.obs_mov.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.obs_mov.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.obs_mov.HeaderText = "Obs";
             this.obs_mov.MinimumWidth = 6;
             this.obs_mov.Name = "obs_mov";
             this.obs_mov.ReadOnly = true;
-            this.obs_mov.Width = 71;
             // 
-            // btnConfimar
+            // label1
             // 
-            this.btnConfimar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnConfimar.Location = new System.Drawing.Point(333, 301);
-            this.btnConfimar.Name = "btnConfimar";
-            this.btnConfimar.Size = new System.Drawing.Size(101, 31);
-            this.btnConfimar.TabIndex = 4;
-            this.btnConfimar.Text = "Confirmar";
-            this.btnConfimar.UseVisualStyleBackColor = true;
-            this.btnConfimar.Click += new System.EventHandler(this.BtnConfirmar_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(23, 95);
+            this.label1.Margin = new System.Windows.Forms.Padding(3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 19);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Stock:";
+            // 
+            // lblStock
+            // 
+            this.lblStock.AutoSize = true;
+            this.lblStock.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStock.Location = new System.Drawing.Point(141, 95);
+            this.lblStock.Margin = new System.Windows.Forms.Padding(3);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Size = new System.Drawing.Size(0, 21);
+            this.lblStock.TabIndex = 14;
             // 
             // FormSalida
             // 
@@ -752,12 +776,6 @@ namespace ConvertecControlBodega.Views
         private System.Windows.Forms.TableLayoutPanel tplDescripcion;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.DataGridView dataGridViewProdSalientes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_producto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cod_bodega;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre_prod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fecha_mov;
-        private System.Windows.Forms.DataGridViewTextBoxColumn obs_mov;
         private System.Windows.Forms.TableLayoutPanel tblFormulario;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label lblDescripcion;
@@ -767,5 +785,13 @@ namespace ConvertecControlBodega.Views
         private System.Windows.Forms.Label lblPro;
         private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.Button btnConfimar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_producto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cod_bodega;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre_prod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha_mov;
+        private System.Windows.Forms.DataGridViewTextBoxColumn obs_mov;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblStock;
     }
 }

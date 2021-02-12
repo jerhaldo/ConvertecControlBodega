@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace ConvertecControlBodega.Views
 {
-    public partial class FormSalida : Form
+    public partial class FormSalida : System.Windows.Forms.Form
     {
         public FormSalida(String id, String ot)
         {
@@ -58,6 +58,7 @@ namespace ConvertecControlBodega.Views
                 lblProveedor.Text = data.nom_proveedor;
                 lblPartePlano.Text = data.parte_plano;
                 txtIdProd.Text = data.id_producto.ToString();
+                lblStock.Text = data.stock.ToString();
                 pictureBoxProducto.Load(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/Assets/imgProductos/" + data.image);
             }
             else
@@ -99,6 +100,7 @@ namespace ConvertecControlBodega.Views
             lblProveedor.Text = "";
             lblMarca.Text = "";
             lblPartePlano.Text = "";
+            lblStock.Text = "";
             pictureBoxProducto.Load(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/Assets/logos/image-unavailable.png");
         }
 
@@ -106,11 +108,27 @@ namespace ConvertecControlBodega.Views
         {
             foreach (DataGridViewRow row in dataGridViewProdSalientes.Rows)
             {
-                if (row.Cells["id_producto"].Value != null)
+                if (row.Cells["id_producto"].Value == null)
                 {
-                    if (row.Cells["id_producto"].Value.ToString().Equals(txtIdProd.Text))
+                    if (MovimientoBusiness.GetDisponibilidad(Double.Parse(lblStock.Text), Double.Parse(txtCant.Text)))
                     {
-                        row.Cells["cantidad"].Value = Double.Parse(txtCant.Text) + Double.Parse(row.Cells["cantidad"].Value.ToString());
+                        dataGridViewProdSalientes.Rows.Add(txtIdProd.Text, txtCodigo.Text, lblDescripcion.Text, txtCant.Text, DateTime.Now, txtObsSalida.Text);
+                        CleanData();
+                        txtCodigo.Focus();
+                        break;
+                    }
+                    else{
+                        AlertMessage("No hay Stock suficiente.\n\nEn caso de que sea un error, notificar.", MessageBoxIcon.Error);
+                        txtCant.Focus();
+                        break;
+                    }
+                } else if (row.Cells["id_producto"].Value.ToString().Equals(txtIdProd.Text))
+                {
+                    var sumCantidad = Double.Parse(txtCant.Text) + Double.Parse(row.Cells["cantidad"].Value.ToString());
+                    
+                    if (MovimientoBusiness.GetDisponibilidad(Double.Parse(lblStock.Text), sumCantidad))
+                    {
+                        row.Cells["cantidad"].Value = sumCantidad;
                         row.Cells["fecha_mov"].Value = DateTime.Now;
                         if (!string.IsNullOrWhiteSpace(txtObsSalida.Text))
                         {
@@ -120,12 +138,12 @@ namespace ConvertecControlBodega.Views
                         txtCodigo.Focus();
                         break;
                     }
-                } else
-                {
-                    dataGridViewProdSalientes.Rows.Add(txtIdProd.Text, txtCodigo.Text, lblDescripcion.Text, txtCant.Text, DateTime.Now, txtObsSalida.Text);
-                    CleanData();
-                    txtCodigo.Focus();
-                    break;
+                    else
+                    {
+                        AlertMessage("No hay Stock suficiente.\n\nEn caso de que sea un error, notificar.", MessageBoxIcon.Error);
+                        txtCant.Focus();
+                        break;
+                    }
                 }
             }
         }
@@ -150,15 +168,25 @@ namespace ConvertecControlBodega.Views
                             id_trabajador = Int32.Parse(lblIdValue.Text),
                             folio = Int32.Parse(lblFolioValue.Text)
                         };
-
                         prodSalList.Add(prodSalida);
                     }
                 }
+                var result = MessageBox.Show("Si continua se guardarán los elementos que se encuentran en las lista.\nDesea confirmar?"
+                                , "Confirmación de guardado.", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-                MovimientoBusiness.InsertSalida(prodSalList);
-                AlertMessage("Registro guardado con exito.", MessageBoxIcon.Information);
-                this.Close();
-            } else
+                if (result == DialogResult.Yes)
+                {
+                    MovimientoBusiness.InsertSalida(prodSalList);
+
+                    if (System.Windows.Forms.Application.OpenForms["Principal"] != null)
+                    {
+                        (System.Windows.Forms.Application.OpenForms["Principal"] as Principal).PopulateData();
+                    }
+                    this.Close();
+                }
+
+            }
+            else
             {
                 AlertMessage("La lista de elementos se encuentra vacía, por favor ingrese elementos a la lista.", MessageBoxIcon.Error);
             }
@@ -189,11 +217,12 @@ namespace ConvertecControlBodega.Views
                     AlertMessage("Por favor ingrese un número mayor a 0.", MessageBoxIcon.Error);
                     txtCant.Clear();
                     txtCant.Focus();
-                } else
+                }
+                else
                 {
                     txtCant.Text = cantidad.ToString();
                 }
-                
+
             }
         }
     }

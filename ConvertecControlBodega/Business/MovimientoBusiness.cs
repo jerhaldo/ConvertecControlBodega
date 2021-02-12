@@ -18,7 +18,6 @@ namespace ConvertecControlBodega.Business
                     orderby m.fecha_mov descending
                     select new MovSalidasDataGridDTO
                     {
-                        id_mov = m.id_mov,
                         cod_bodega = p.cod_bodega,
                         descripcion = p.descripcion,
                         cantidad = m.cantidad,
@@ -28,7 +27,7 @@ namespace ConvertecControlBodega.Business
                         nombre = t.nombre,
                         apellidos = t.apellidos
                     }
-                ).ToList();
+                ).Take(100).ToList();
 
                 db.Dispose();
 
@@ -112,6 +111,7 @@ namespace ConvertecControlBodega.Business
                 var data = (
                     from p in db.Producto
                     where p.cod_bodega != null
+                    where p.borrado == false
                     select new CodBodegaProducto
                     {
                         cod_bodega = p.cod_bodega
@@ -134,6 +134,7 @@ namespace ConvertecControlBodega.Business
                     join pr in db.Proveedor on p.id_proveedor equals pr.id_proveedor
                     join im in db.Imagen_Producto on p.id_producto equals im.id_producto
                     where p.cod_bodega == cod
+                    where p.borrado == false
                     select new DescProducto
                     {
                         descripcion = p.descripcion,
@@ -142,7 +143,8 @@ namespace ConvertecControlBodega.Business
                         parte_plano = p.parte_plano,
                         obs = p.obs,
                         image = im.image,
-                        id_producto = p.id_producto
+                        id_producto = p.id_producto,
+                        stock = p.stock
                     }
                 ).SingleOrDefault();
 
@@ -156,9 +158,10 @@ namespace ConvertecControlBodega.Business
         {
             using (var db = new ConvertecBodegaEntities())
             {
-                var result = (from t in db.Producto
-                              where t.cod_bodega == cod
-                              select t.cod_bodega).Any();
+                var result = (from p in db.Producto
+                              where p.cod_bodega == cod
+                              where p.borrado == false
+                              select p.cod_bodega).Any();
 
                 return result;
             }
@@ -169,6 +172,7 @@ namespace ConvertecControlBodega.Business
             ConvertecBodegaEntities db = new ConvertecBodegaEntities();
             foreach (ProdSalida prodsalida in prodSalList)
             {
+                //INSERT MOVIMIENTO
                 Movimiento mov = new Movimiento
                 {
                     id_producto = prodsalida.id_producto,
@@ -177,19 +181,37 @@ namespace ConvertecControlBodega.Business
                     ot = prodsalida.ot,
                     obs_mov = prodsalida.obs_mov
                 };
-
                 db.Movimiento.Add(mov);
                 db.SaveChanges();
 
+                //INSERT SALIDA
                 Salida_Prod pd = new Salida_Prod
                 {
                     id_mov = mov.id_mov,
                     id_trabajador = prodsalida.id_trabajador,
                     folio = prodsalida.folio
                 };
-
                 db.Salida_Prod.Add(pd);
                 db.SaveChanges();
+
+                //UPDATE STOCK DEL PRODUCTO
+                var producto = db.Producto.SingleOrDefault(p => p.id_producto == prodsalida.id_producto);
+                if (producto != null)
+                {
+                    producto.stock = producto.stock - prodsalida.cantidad;
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        public static bool GetDisponibilidad(double stock, double cant)
+        {
+            if ((stock - cant) < 0)
+            {
+                return false;
+            } else
+            {
+                return true;
             }
         }
     }

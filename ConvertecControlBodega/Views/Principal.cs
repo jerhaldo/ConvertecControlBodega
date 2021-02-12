@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace ConvertecControlBodega
 {
-    public partial class Principal : Form
+    public partial class Principal : System.Windows.Forms.Form
     {
         public Principal()
         {
@@ -18,34 +18,35 @@ namespace ConvertecControlBodega
             timer1.Start();
         }
 
-        void PopulateData()
+        public void PopulateData()
         {
             dataGridViewSalidas.DataSource = MovimientoBusiness.GetMovimientos();
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             labelClock.Text = DateTime.Now.ToString("G");
         }
 
-        private void btnSalida_Click(object sender, EventArgs e)
+        private void BtnSalida_Click(object sender, EventArgs e)
         {
-            IngresoTrabajdor ingTrabajador = new IngresoTrabajdor();
+            IngresoTrabajador ingTrabajador = new IngresoTrabajador();
             ingTrabajador.ShowDialog();
         }
 
-        private void btnIngreso_Click(object sender, EventArgs e)
+        private void RefreshData(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.F5)
+            {
+                PopulateData();
+            }
         }
 
-        private void reloadTables(object sender, EventArgs e)
+        private void btnMostrarProducto_Click(object sender, EventArgs e)
         {
-
-            PopulateData();
-            Console.WriteLine("TESTING");
-            //dataGridViewSalidas.Refresh();
+            FormDisplayProducto mostrar = new FormDisplayProducto();
+            mostrar.ShowDialog();
         }
     }
 }

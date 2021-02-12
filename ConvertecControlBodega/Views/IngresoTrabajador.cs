@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace ConvertecControlBodega.Views
 {
-    public partial class IngresoTrabajdor : Form
+    public partial class IngresoTrabajador : System.Windows.Forms.Form
     {
-        public IngresoTrabajdor()
+        public IngresoTrabajador()
         {
             InitializeComponent();
             AutoCompleteTextID();
@@ -42,7 +42,7 @@ namespace ConvertecControlBodega.Views
                 } else
                 {   
                     //Opens Form
-                    FormSalida formSalida = new FormSalida(this.txtId.Text, this.txtOt.Text);
+                    Form formSalida = new FormSalida(this.txtId.Text, this.txtOt.Text);
                     formSalida.ShowDialog();
                     this.Close();
                 }
