@@ -21,7 +21,7 @@
           <Property Name="id_proveedor" Type="int" Nullable="false" />
           <Property Name="id_marca" Type="int" Nullable="false" />
           <Property Name="cod_prod_prov" Type="varchar" MaxLength="50" />
-          <Property Name="documento" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="documento" Type="varchar" MaxLength="50" />
           <Property Name="valor" Type="int" Nullable="false" />
           <Property Name="valor_unitario" Type="int" />
         </EntityType>
@@ -39,9 +39,9 @@
           <Property Name="id_mov" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_producto" Type="int" Nullable="false" />
           <Property Name="fecha_mov" Type="datetime" Nullable="false" />
-          <Property Name="ot" Type="varchar" MaxLength="50" />
+          <Property Name="ot" Type="varchar" MaxLength="256" />
           <Property Name="cantidad" Type="float" Nullable="false" />
-          <Property Name="obs_mov" Type="varchar" MaxLength="256" />
+          <Property Name="obs_mov" Type="varchar" MaxLength="512" />
         </EntityType>
         <EntityType Name="Producto">
           <Key>
@@ -51,8 +51,9 @@
           <Property Name="id_proveedor" Type="int" Nullable="false" />
           <Property Name="id_marca" Type="int" Nullable="false" />
           <Property Name="cod_bodega" Type="bigint" />
-          <Property Name="descripcion" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="stock" Type="float" Nullable="false" />
+          <Property Name="stock_min" Type="float" Nullable="false" />
           <Property Name="valor" Type="int" Nullable="false" />
           <Property Name="valor_unitario" Type="int" />
           <Property Name="unidad" Type="bit" Nullable="false" />
@@ -313,7 +314,7 @@
           <Property Name="id_proveedor" Type="Int32" Nullable="false" />
           <Property Name="id_marca" Type="Int32" Nullable="false" />
           <Property Name="cod_prod_prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="documento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="documento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="valor" Type="Int32" Nullable="false" />
           <Property Name="valor_unitario" Type="Int32" />
           <NavigationProperty Name="Marca" Relationship="ConvertecBodegaModel.FK_Ingreso_Prod_Marca" FromRole="Ingreso_Prod" ToRole="Marca" />
@@ -336,9 +337,9 @@
           <Property Name="id_mov" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_producto" Type="Int32" Nullable="false" />
           <Property Name="fecha_mov" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ot" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ot" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="cantidad" Type="Double" Nullable="false" />
-          <Property Name="obs_mov" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="obs_mov" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Ingreso_Prod" Relationship="ConvertecBodegaModel.FK_Ingreso_Prod_Movimiento" FromRole="Movimiento" ToRole="Ingreso_Prod" />
           <NavigationProperty Name="Producto" Relationship="ConvertecBodegaModel.FK_Movimiento_Producto" FromRole="Movimiento" ToRole="Producto" />
           <NavigationProperty Name="Salida_Prod" Relationship="ConvertecBodegaModel.FK_Salida_Prod_Movimiento" FromRole="Movimiento" ToRole="Salida_Prod" />
@@ -351,7 +352,7 @@
           <Property Name="id_proveedor" Type="Int32" Nullable="false" />
           <Property Name="id_marca" Type="Int32" Nullable="false" />
           <Property Name="cod_bodega" Type="Int64" />
-          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="stock" Type="Double" Nullable="false" />
           <Property Name="valor" Type="Int32" Nullable="false" />
           <Property Name="valor_unitario" Type="Int32" />
@@ -364,6 +365,7 @@
           <NavigationProperty Name="Marca" Relationship="ConvertecBodegaModel.FK_Producto_Marca" FromRole="Producto" ToRole="Marca" />
           <NavigationProperty Name="Movimiento" Relationship="ConvertecBodegaModel.FK_Movimiento_Producto" FromRole="Producto" ToRole="Movimiento" />
           <NavigationProperty Name="Proveedor" Relationship="ConvertecBodegaModel.FK_Producto_Proveedor" FromRole="Producto" ToRole="Proveedor" />
+          <Property Name="stock_min" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="Proveedor">
           <Key>
@@ -560,6 +562,7 @@
           <EntitySetMapping Name="Producto">
             <EntityTypeMapping TypeName="ConvertecBodegaModel.Producto">
               <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="stock_min" ColumnName="stock_min" />
                 <ScalarProperty Name="borrado" ColumnName="borrado" />
                 <ScalarProperty Name="obs" ColumnName="obs" />
                 <ScalarProperty Name="parte_plano" ColumnName="parte_plano" />

@@ -34,15 +34,6 @@ namespace ConvertecControlBodega
             this.label1 = new System.Windows.Forms.Label();
             this.labelClock = new System.Windows.Forms.Label();
             this.dataGridViewSalidas = new System.Windows.Forms.DataGridView();
-            this.codbodegaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechamovDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.otDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellidosDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.obsmovDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.movSalidasDataGridDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnSalida = new System.Windows.Forms.Button();
@@ -56,8 +47,29 @@ namespace ConvertecControlBodega
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.opción1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcion2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.codbodegaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechamovDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.otDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidosDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.obsmovDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.movSalidasDataGridDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.codbodegaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.documentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorunitarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomproveedorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nommarcaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechamovDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.parteplanoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.otDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.obsmovDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.movIngresoDataGridDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalidas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.movSalidasDataGridDTOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -76,6 +88,8 @@ namespace ConvertecControlBodega
             this.splitContainer4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIngresos)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.movSalidasDataGridDTOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movIngresoDataGridDTOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -129,8 +143,236 @@ namespace ConvertecControlBodega
             this.dataGridViewSalidas.RowHeadersVisible = false;
             this.dataGridViewSalidas.RowHeadersWidth = 51;
             this.dataGridViewSalidas.RowTemplate.Height = 24;
-            this.dataGridViewSalidas.Size = new System.Drawing.Size(978, 309);
+            this.dataGridViewSalidas.Size = new System.Drawing.Size(1038, 243);
             this.dataGridViewSalidas.TabIndex = 0;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitContainer1.CausesValidation = false;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.splitContainer1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 28);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.splitContainer1.Panel1.CausesValidation = false;
+            this.splitContainer1.Panel1.Controls.Add(this.btnSalida);
+            this.splitContainer1.Panel1.Controls.Add(this.btnMostrarProducto);
+            this.splitContainer1.Panel1.Controls.Add(this.labelClock);
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.ForeColor = System.Drawing.SystemColors.ControlText;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.CausesValidation = false;
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Size = new System.Drawing.Size(1042, 605);
+            this.splitContainer1.SplitterDistance = 41;
+            this.splitContainer1.SplitterWidth = 2;
+            this.splitContainer1.TabIndex = 1;
+            // 
+            // btnSalida
+            // 
+            this.btnSalida.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalida.BackColor = System.Drawing.Color.LawnGreen;
+            this.btnSalida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalida.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalida.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnSalida.Location = new System.Drawing.Point(928, 4);
+            this.btnSalida.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSalida.Name = "btnSalida";
+            this.btnSalida.Size = new System.Drawing.Size(100, 33);
+            this.btnSalida.TabIndex = 2;
+            this.btnSalida.Text = "Salida";
+            this.btnSalida.UseVisualStyleBackColor = false;
+            this.btnSalida.Click += new System.EventHandler(this.BtnSalida_Click);
+            // 
+            // btnMostrarProducto
+            // 
+            this.btnMostrarProducto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMostrarProducto.BackColor = System.Drawing.Color.LawnGreen;
+            this.btnMostrarProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMostrarProducto.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMostrarProducto.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnMostrarProducto.Location = new System.Drawing.Point(815, 4);
+            this.btnMostrarProducto.Margin = new System.Windows.Forms.Padding(0);
+            this.btnMostrarProducto.Name = "btnMostrarProducto";
+            this.btnMostrarProducto.Size = new System.Drawing.Size(100, 33);
+            this.btnMostrarProducto.TabIndex = 1;
+            this.btnMostrarProducto.Text = "Mostrar";
+            this.btnMostrarProducto.UseVisualStyleBackColor = false;
+            this.btnMostrarProducto.Click += new System.EventHandler(this.btnMostrarProducto_Click);
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.CausesValidation = false;
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.CausesValidation = false;
+            this.splitContainer2.Panel1.Controls.Add(this.splitContainer3);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
+            this.splitContainer2.Size = new System.Drawing.Size(1038, 558);
+            this.splitContainer2.SplitterDistance = 280;
+            this.splitContainer2.SplitterWidth = 2;
+            this.splitContainer2.TabIndex = 2;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer3.CausesValidation = false;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.splitContainer3.Panel1.CausesValidation = false;
+            this.splitContainer3.Panel1.Controls.Add(this.label2);
+            this.splitContainer3.Panel1.ForeColor = System.Drawing.SystemColors.ControlText;
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.splitContainer3.Panel2.Controls.Add(this.dataGridViewSalidas);
+            this.splitContainer3.Size = new System.Drawing.Size(1038, 283);
+            this.splitContainer3.SplitterDistance = 38;
+            this.splitContainer3.SplitterWidth = 2;
+            this.splitContainer3.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label2.Location = new System.Drawing.Point(10, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(157, 19);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Salidas Recientes:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer4.CausesValidation = false;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.splitContainer4.Panel1.Controls.Add(this.label3);
+            this.splitContainer4.Panel1.ForeColor = System.Drawing.SystemColors.ControlText;
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.splitContainer4.Panel2.Controls.Add(this.dataGridViewIngresos);
+            this.splitContainer4.Size = new System.Drawing.Size(1038, 300);
+            this.splitContainer4.SplitterDistance = 37;
+            this.splitContainer4.SplitterWidth = 2;
+            this.splitContainer4.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label3.Location = new System.Drawing.Point(10, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(168, 19);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Ingresos Recientes:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dataGridViewIngresos
+            // 
+            this.dataGridViewIngresos.AllowUserToAddRows = false;
+            this.dataGridViewIngresos.AllowUserToDeleteRows = false;
+            this.dataGridViewIngresos.AutoGenerateColumns = false;
+            this.dataGridViewIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewIngresos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codbodegaDataGridViewTextBoxColumn1,
+            this.descripcionDataGridViewTextBoxColumn1,
+            this.cantidadDataGridViewTextBoxColumn1,
+            this.documentoDataGridViewTextBoxColumn,
+            this.valorDataGridViewTextBoxColumn,
+            this.valorunitarioDataGridViewTextBoxColumn,
+            this.nomproveedorDataGridViewTextBoxColumn,
+            this.nommarcaDataGridViewTextBoxColumn,
+            this.fechamovDataGridViewTextBoxColumn1,
+            this.parteplanoDataGridViewTextBoxColumn,
+            this.otDataGridViewTextBoxColumn1,
+            this.obsmovDataGridViewTextBoxColumn1});
+            this.dataGridViewIngresos.DataSource = this.movIngresoDataGridDTOBindingSource;
+            this.dataGridViewIngresos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewIngresos.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewIngresos.Name = "dataGridViewIngresos";
+            this.dataGridViewIngresos.ReadOnly = true;
+            this.dataGridViewIngresos.RowHeadersVisible = false;
+            this.dataGridViewIngresos.RowHeadersWidth = 51;
+            this.dataGridViewIngresos.RowTemplate.Height = 24;
+            this.dataGridViewIngresos.Size = new System.Drawing.Size(1038, 261);
+            this.dataGridViewIngresos.TabIndex = 0;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.opción1ToolStripMenuItem,
+            this.opcion2ToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1042, 28);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // opción1ToolStripMenuItem
+            // 
+            this.opción1ToolStripMenuItem.Name = "opción1ToolStripMenuItem";
+            this.opción1ToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
+            this.opción1ToolStripMenuItem.Text = "Opción 1";
+            this.opción1ToolStripMenuItem.Click += new System.EventHandler(this.opción1ToolStripMenuItem_Click);
+            // 
+            // opcion2ToolStripMenuItem
+            // 
+            this.opcion2ToolStripMenuItem.Name = "opcion2ToolStripMenuItem";
+            this.opcion2ToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
+            this.opcion2ToolStripMenuItem.Text = "Opcion 2";
+            this.opcion2ToolStripMenuItem.Click += new System.EventHandler(this.opcion2ToolStripMenuItem_Click);
             // 
             // codbodegaDataGridViewTextBoxColumn
             // 
@@ -216,224 +458,134 @@ namespace ConvertecControlBodega
             // 
             this.movSalidasDataGridDTOBindingSource.DataSource = typeof(ConvertecControlBodega.Model.MovSalidasDataGridDTO);
             // 
-            // timer1
+            // codbodegaDataGridViewTextBoxColumn1
             // 
-            this.timer1.Interval = 500;
-            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            this.codbodegaDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.codbodegaDataGridViewTextBoxColumn1.DataPropertyName = "cod_bodega";
+            this.codbodegaDataGridViewTextBoxColumn1.HeaderText = "Código";
+            this.codbodegaDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.codbodegaDataGridViewTextBoxColumn1.Name = "codbodegaDataGridViewTextBoxColumn1";
+            this.codbodegaDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.codbodegaDataGridViewTextBoxColumn1.Width = 101;
             // 
-            // splitContainer1
+            // descripcionDataGridViewTextBoxColumn1
             // 
-            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitContainer1.CausesValidation = false;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.splitContainer1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 28);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.descripcionDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.descripcionDataGridViewTextBoxColumn1.DataPropertyName = "descripcion";
+            this.descripcionDataGridViewTextBoxColumn1.HeaderText = "Descripción";
+            this.descripcionDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.descripcionDataGridViewTextBoxColumn1.Name = "descripcionDataGridViewTextBoxColumn1";
+            this.descripcionDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.descripcionDataGridViewTextBoxColumn1.Width = 136;
             // 
-            // splitContainer1.Panel1
+            // cantidadDataGridViewTextBoxColumn1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.splitContainer1.Panel1.CausesValidation = false;
-            this.splitContainer1.Panel1.Controls.Add(this.btnSalida);
-            this.splitContainer1.Panel1.Controls.Add(this.btnMostrarProducto);
-            this.splitContainer1.Panel1.Controls.Add(this.labelClock);
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
-            this.splitContainer1.Panel1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cantidadDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cantidadDataGridViewTextBoxColumn1.DataPropertyName = "cantidad";
+            this.cantidadDataGridViewTextBoxColumn1.HeaderText = "Cant";
+            this.cantidadDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.cantidadDataGridViewTextBoxColumn1.Name = "cantidadDataGridViewTextBoxColumn1";
+            this.cantidadDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.cantidadDataGridViewTextBoxColumn1.Width = 82;
             // 
-            // splitContainer1.Panel2
+            // documentoDataGridViewTextBoxColumn
             // 
-            this.splitContainer1.Panel2.CausesValidation = false;
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(982, 755);
-            this.splitContainer1.SplitterDistance = 52;
-            this.splitContainer1.SplitterWidth = 2;
-            this.splitContainer1.TabIndex = 1;
+            this.documentoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.documentoDataGridViewTextBoxColumn.DataPropertyName = "documento";
+            this.documentoDataGridViewTextBoxColumn.HeaderText = "Doc";
+            this.documentoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.documentoDataGridViewTextBoxColumn.Name = "documentoDataGridViewTextBoxColumn";
+            this.documentoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.documentoDataGridViewTextBoxColumn.Width = 74;
             // 
-            // btnSalida
+            // valorDataGridViewTextBoxColumn
             // 
-            this.btnSalida.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalida.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnSalida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalida.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalida.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnSalida.Location = new System.Drawing.Point(868, 4);
-            this.btnSalida.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSalida.Name = "btnSalida";
-            this.btnSalida.Size = new System.Drawing.Size(100, 44);
-            this.btnSalida.TabIndex = 2;
-            this.btnSalida.Text = "Salida";
-            this.btnSalida.UseVisualStyleBackColor = false;
-            this.btnSalida.Click += new System.EventHandler(this.BtnSalida_Click);
+            this.valorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.valorDataGridViewTextBoxColumn.DataPropertyName = "valor";
+            this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
+            this.valorDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
+            this.valorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.valorDataGridViewTextBoxColumn.Width = 83;
             // 
-            // btnMostrarProducto
+            // valorunitarioDataGridViewTextBoxColumn
             // 
-            this.btnMostrarProducto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMostrarProducto.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnMostrarProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMostrarProducto.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMostrarProducto.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnMostrarProducto.Location = new System.Drawing.Point(755, 4);
-            this.btnMostrarProducto.Margin = new System.Windows.Forms.Padding(0);
-            this.btnMostrarProducto.Name = "btnMostrarProducto";
-            this.btnMostrarProducto.Size = new System.Drawing.Size(100, 44);
-            this.btnMostrarProducto.TabIndex = 1;
-            this.btnMostrarProducto.Text = "Mostrar";
-            this.btnMostrarProducto.UseVisualStyleBackColor = false;
-            this.btnMostrarProducto.Click += new System.EventHandler(this.btnMostrarProducto_Click);
+            this.valorunitarioDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.valorunitarioDataGridViewTextBoxColumn.DataPropertyName = "valor_unitario";
+            this.valorunitarioDataGridViewTextBoxColumn.HeaderText = "Valor Un.";
+            this.valorunitarioDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.valorunitarioDataGridViewTextBoxColumn.Name = "valorunitarioDataGridViewTextBoxColumn";
+            this.valorunitarioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.valorunitarioDataGridViewTextBoxColumn.Width = 115;
             // 
-            // splitContainer2
+            // nomproveedorDataGridViewTextBoxColumn
             // 
-            this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer2.CausesValidation = false;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.nomproveedorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nomproveedorDataGridViewTextBoxColumn.DataPropertyName = "nom_proveedor";
+            this.nomproveedorDataGridViewTextBoxColumn.HeaderText = "Proveedor";
+            this.nomproveedorDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nomproveedorDataGridViewTextBoxColumn.Name = "nomproveedorDataGridViewTextBoxColumn";
+            this.nomproveedorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomproveedorDataGridViewTextBoxColumn.Width = 126;
             // 
-            // splitContainer2.Panel1
+            // nommarcaDataGridViewTextBoxColumn
             // 
-            this.splitContainer2.Panel1.CausesValidation = false;
-            this.splitContainer2.Panel1.Controls.Add(this.splitContainer3);
+            this.nommarcaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nommarcaDataGridViewTextBoxColumn.DataPropertyName = "nom_marca";
+            this.nommarcaDataGridViewTextBoxColumn.HeaderText = "Marca";
+            this.nommarcaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nommarcaDataGridViewTextBoxColumn.Name = "nommarcaDataGridViewTextBoxColumn";
+            this.nommarcaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nommarcaDataGridViewTextBoxColumn.Width = 96;
             // 
-            // splitContainer2.Panel2
+            // fechamovDataGridViewTextBoxColumn1
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer2.Size = new System.Drawing.Size(978, 709);
-            this.splitContainer2.SplitterDistance = 357;
-            this.splitContainer2.SplitterWidth = 2;
-            this.splitContainer2.TabIndex = 2;
+            this.fechamovDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.fechamovDataGridViewTextBoxColumn1.DataPropertyName = "fecha_mov";
+            this.fechamovDataGridViewTextBoxColumn1.HeaderText = "Fecha";
+            this.fechamovDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.fechamovDataGridViewTextBoxColumn1.Name = "fechamovDataGridViewTextBoxColumn1";
+            this.fechamovDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.fechamovDataGridViewTextBoxColumn1.Width = 91;
             // 
-            // splitContainer3
+            // parteplanoDataGridViewTextBoxColumn
             // 
-            this.splitContainer3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer3.CausesValidation = false;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.parteplanoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.parteplanoDataGridViewTextBoxColumn.DataPropertyName = "parte_plano";
+            this.parteplanoDataGridViewTextBoxColumn.HeaderText = "Parte Plano";
+            this.parteplanoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.parteplanoDataGridViewTextBoxColumn.Name = "parteplanoDataGridViewTextBoxColumn";
+            this.parteplanoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.parteplanoDataGridViewTextBoxColumn.Width = 135;
             // 
-            // splitContainer3.Panel1
+            // otDataGridViewTextBoxColumn1
             // 
-            this.splitContainer3.Panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.splitContainer3.Panel1.CausesValidation = false;
-            this.splitContainer3.Panel1.Controls.Add(this.label2);
-            this.splitContainer3.Panel1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.otDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.otDataGridViewTextBoxColumn1.DataPropertyName = "ot";
+            this.otDataGridViewTextBoxColumn1.HeaderText = "OT";
+            this.otDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.otDataGridViewTextBoxColumn1.Name = "otDataGridViewTextBoxColumn1";
+            this.otDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.otDataGridViewTextBoxColumn1.Width = 62;
             // 
-            // splitContainer3.Panel2
+            // obsmovDataGridViewTextBoxColumn1
             // 
-            this.splitContainer3.Panel2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.splitContainer3.Panel2.Controls.Add(this.dataGridViewSalidas);
-            this.splitContainer3.Size = new System.Drawing.Size(978, 360);
-            this.splitContainer3.SplitterDistance = 49;
-            this.splitContainer3.SplitterWidth = 2;
-            this.splitContainer3.TabIndex = 2;
+            this.obsmovDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.obsmovDataGridViewTextBoxColumn1.DataPropertyName = "obs_mov";
+            this.obsmovDataGridViewTextBoxColumn1.HeaderText = "Obs";
+            this.obsmovDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.obsmovDataGridViewTextBoxColumn1.Name = "obsmovDataGridViewTextBoxColumn1";
+            this.obsmovDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.obsmovDataGridViewTextBoxColumn1.Width = 73;
             // 
-            // label2
+            // movIngresoDataGridDTOBindingSource
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label2.Location = new System.Drawing.Point(10, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(157, 19);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Salidas Recientes:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // splitContainer4
-            // 
-            this.splitContainer4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer4.CausesValidation = false;
-            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer4.Name = "splitContainer4";
-            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer4.Panel1
-            // 
-            this.splitContainer4.Panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.splitContainer4.Panel1.Controls.Add(this.label3);
-            this.splitContainer4.Panel1.ForeColor = System.Drawing.SystemColors.ControlText;
-            // 
-            // splitContainer4.Panel2
-            // 
-            this.splitContainer4.Panel2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.splitContainer4.Panel2.Controls.Add(this.dataGridViewIngresos);
-            this.splitContainer4.Size = new System.Drawing.Size(978, 364);
-            this.splitContainer4.SplitterDistance = 47;
-            this.splitContainer4.SplitterWidth = 2;
-            this.splitContainer4.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label3.Location = new System.Drawing.Point(10, 18);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(168, 19);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Ingresos Recientes:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dataGridViewIngresos
-            // 
-            this.dataGridViewIngresos.AllowUserToAddRows = false;
-            this.dataGridViewIngresos.AllowUserToDeleteRows = false;
-            this.dataGridViewIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewIngresos.Location = new System.Drawing.Point(10, 3);
-            this.dataGridViewIngresos.Name = "dataGridViewIngresos";
-            this.dataGridViewIngresos.ReadOnly = true;
-            this.dataGridViewIngresos.RowHeadersWidth = 51;
-            this.dataGridViewIngresos.RowTemplate.Height = 24;
-            this.dataGridViewIngresos.Size = new System.Drawing.Size(958, 315);
-            this.dataGridViewIngresos.TabIndex = 0;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.opción1ToolStripMenuItem,
-            this.opcion2ToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(982, 28);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // opción1ToolStripMenuItem
-            // 
-            this.opción1ToolStripMenuItem.Name = "opción1ToolStripMenuItem";
-            this.opción1ToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
-            this.opción1ToolStripMenuItem.Text = "Opción 1";
-            // 
-            // opcion2ToolStripMenuItem
-            // 
-            this.opcion2ToolStripMenuItem.Name = "opcion2ToolStripMenuItem";
-            this.opcion2ToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
-            this.opcion2ToolStripMenuItem.Text = "Opcion 2";
+            this.movIngresoDataGridDTOBindingSource.DataSource = typeof(ConvertecControlBodega.Model.MovIngresoDataGridDTO);
             // 
             // Principal
             // 
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(982, 783);
+            this.ClientSize = new System.Drawing.Size(1042, 633);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -444,12 +596,11 @@ namespace ConvertecControlBodega
             this.MinimumSize = new System.Drawing.Size(1000, 680);
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Control de Bodega Convertec - Principal";
+            this.Text = "Control de Bodega Convertec";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Principal_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RefreshData);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalidas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.movSalidasDataGridDTOBindingSource)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -472,6 +623,8 @@ namespace ConvertecControlBodega
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIngresos)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.movSalidasDataGridDTOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movIngresoDataGridDTOBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -495,7 +648,7 @@ namespace ConvertecControlBodega
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem opción1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem opcion2ToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idmovDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource movIngresoDataGridDTOBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn codbodegaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
@@ -504,6 +657,18 @@ namespace ConvertecControlBodega
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidosDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn obsmovDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codbodegaDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn documentoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorunitarioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomproveedorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nommarcaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechamovDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn parteplanoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn otDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn obsmovDataGridViewTextBoxColumn1;
     }
 }
 

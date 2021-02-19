@@ -43,8 +43,8 @@ namespace ConvertecControlBodega.Views
                 {   
                     //Opens Form
                     Form formSalida = new FormSalida(this.txtId.Text, this.txtOt.Text);
-                    formSalida.ShowDialog();
-                    this.Close();
+                    formSalida.Show();
+                    this.Hide();
                 }
                 
             }
@@ -109,6 +109,11 @@ namespace ConvertecControlBodega.Views
             
             //Muestra el MessageBox.
             MessageBox.Show(message, caption, buttons, MessageBoxIcon.Error);
+        }
+
+        private void IngresoTrabajador_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 

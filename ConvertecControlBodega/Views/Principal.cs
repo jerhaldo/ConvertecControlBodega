@@ -12,7 +12,7 @@ namespace ConvertecControlBodega
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Principal_Load(object sender, EventArgs e)
         {
             PopulateData();
             timer1.Start();
@@ -20,8 +20,8 @@ namespace ConvertecControlBodega
 
         public void PopulateData()
         {
-            dataGridViewSalidas.DataSource = MovimientoBusiness.GetMovimientos();
-
+            dataGridViewSalidas.DataSource = MovimientoBusiness.GetMovimientosSalidas();
+            dataGridViewIngresos.DataSource = MovimientoBusiness.GetMovimientosIngresos();
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -47,6 +47,18 @@ namespace ConvertecControlBodega
         {
             FormDisplayProducto mostrar = new FormDisplayProducto();
             mostrar.ShowDialog();
+        }
+
+        private void opcion2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BuscadorProductos buscador = new BuscadorProductos();
+            buscador.ShowDialog();
+        }
+
+        private void opción1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormIngreso ingreso = new FormIngreso();
+            ingreso.ShowDialog();
         }
     }
 }

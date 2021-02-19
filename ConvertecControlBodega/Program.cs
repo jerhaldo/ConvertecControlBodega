@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConvertecControlBodega.Views;
+using System;
 using System.Windows.Forms;
 
 namespace ConvertecControlBodega
@@ -13,7 +14,7 @@ namespace ConvertecControlBodega
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Principal());
+            Application.Run(new IngresoTrabajador());
         }
     }
 }

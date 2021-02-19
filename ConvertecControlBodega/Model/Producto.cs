@@ -34,6 +34,7 @@ namespace ConvertecControlBodega.Model
         public string parte_plano { get; set; }
         public string obs { get; set; }
         public bool borrado { get; set; }
+        public double stock_min { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Imagen_Producto> Imagen_Producto { get; set; }

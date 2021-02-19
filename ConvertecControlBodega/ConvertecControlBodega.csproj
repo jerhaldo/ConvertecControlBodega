@@ -78,11 +78,17 @@
   <PropertyGroup />
   <PropertyGroup />
   <ItemGroup>
+    <Reference Include="AdvancedDataGridView, Version=1.1.25411.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DG.AdvancedDataGridView.1.1.25411.9\lib\net40\AdvancedDataGridView.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome.Sharp, Version=5.15.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.15.3\lib\net472\FontAwesome.Sharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -103,11 +109,23 @@
   <ItemGroup>
     <Compile Include="Business\MovimientoBusiness.cs" />
     <Compile Include="Model\MovimientosDTO.cs" />
+    <Compile Include="Views\BuscadorProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BuscadorProductos.Designer.cs">
+      <DependentUpon>BuscadorProductos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FormDisplayProducto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\FormDisplayProducto.Designer.cs">
       <DependentUpon>FormDisplayProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormIngreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormIngreso.Designer.cs">
+      <DependentUpon>FormIngreso.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IngresoTrabajador.cs">
       <SubType>Form</SubType>
@@ -168,8 +186,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Views\BuscadorProductos.resx">
+      <DependentUpon>BuscadorProductos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FormDisplayProducto.resx">
       <DependentUpon>FormDisplayProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormIngreso.resx">
+      <DependentUpon>FormIngreso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\IngresoTrabajador.resx">
       <DependentUpon>IngresoTrabajador.cs</DependentUpon>
@@ -201,8 +225,11 @@
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\ConvertecControlBodega.Model.Ingreso_Prod.datasource" />
     <None Include="Properties\DataSources\ConvertecControlBodega.Model.Marca.datasource" />
+    <None Include="Properties\DataSources\ConvertecControlBodega.Model.MovIngresoDataGridDTO.datasource" />
     <None Include="Properties\DataSources\ConvertecControlBodega.Model.MovSalidasDataGridDTO.datasource" />
     <None Include="Properties\DataSources\ConvertecControlBodega.Model.Producto.datasource" />
+    <None Include="Properties\DataSources\ConvertecControlBodega.Model.ProductoDetalle.datasource" />
+    <None Include="Properties\DataSources\ConvertecControlBodega.Model.ProductosDetalle.datasource" />
     <None Include="Properties\DataSources\ConvertecControlBodega.Model.Proveedor.datasource" />
     <None Include="Properties\DataSources\ConvertecControlBodega.Model.Salida_Prod.datasource" />
     <None Include="Properties\Settings.settings">
@@ -286,6 +313,9 @@
       <DependentUpon>BodegaModel.edmx</DependentUpon>
       <LastGenOutput>BodegaModel.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
