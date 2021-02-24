@@ -1,5 +1,6 @@
 ﻿using ConvertecControlBodega.Business;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ConvertecControlBodega.Views
@@ -9,9 +10,14 @@ namespace ConvertecControlBodega.Views
         public IngresoTrabajador()
         {
             InitializeComponent();
-            AutoCompleteTextID();
-            AutoCompleteTextOT();
             this.CancelButton = btnCancelar;
+            this.txtId.Select();
+        }
+
+        private void IngresoTrabajador_Load(object sender, EventArgs e)
+        {
+            timer1.Start();
+            this.CheckDBConnection(true);
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -21,11 +27,6 @@ namespace ConvertecControlBodega.Views
 
         private void BtnConfirmar_Click(object sender, EventArgs e)
         {
-            ValidarCampos();
-        }
-
-        private void ValidarCampos()
-        {   
             //Validates empty ID
             if (string.IsNullOrWhiteSpace(txtId.Text))
             {
@@ -39,14 +40,16 @@ namespace ConvertecControlBodega.Views
                 {
                     AlertMessage("No se ingresó ninguna OT, por favor ingrese un identificador.");
                     txtOt.Focus();
-                } else
-                {   
+                }
+                else
+                {
                     //Opens Form
                     Form formSalida = new FormSalida(this.txtId.Text, this.txtOt.Text);
                     formSalida.Show();
+                    timer1.Stop();
                     this.Hide();
                 }
-                
+
             }
             else
             {
@@ -89,13 +92,11 @@ namespace ConvertecControlBodega.Views
                 e.Handled = true;
                 e.SuppressKeyPress = true;
                 SendKeys.Send("{TAB}");
-
             }
         }
 
         private void CheckNumber(object sender, KeyPressEventArgs e)
         {
-
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
@@ -114,6 +115,37 @@ namespace ConvertecControlBodega.Views
         private void IngresoTrabajador_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void CheckDBConnection(bool showError)
+        {
+            if (MovimientoBusiness.CheckDBConnection(showError))
+            {
+                AutoCompleteTextID();
+                AutoCompleteTextOT();
+                iconPbDataBase.IconColor = Color.FromArgb(138, 183, 30);
+                btnConfirmar.Enabled = true;
+            }
+            else
+            {
+                //MessageBox.Show("Error, No se ha podido establecer una conexión con la base de datos.", "Error de conexión.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                iconPbDataBase.IconColor = Color.FromArgb(255, 56, 0);
+                this.btnConfirmar.Enabled = false;
+            }
+        }
+
+        private void IconPbDataBase_Click(object sender, EventArgs e)
+        {
+            //Forzar chequeo
+            timer1.Stop();
+            this.CheckDBConnection(true);
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //Cada 30 sec
+            this.CheckDBConnection(false);
         }
     }
 

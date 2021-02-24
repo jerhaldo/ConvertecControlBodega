@@ -8,7 +8,7 @@ namespace ConvertecControlBodega.Views
     public partial class FormSalida : System.Windows.Forms.Form
     {
         private bool unidad;
-        private int id_prod;
+        private int id_prod = -1;
 
         public FormSalida(String id, String ot)
         {
@@ -39,49 +39,53 @@ namespace ConvertecControlBodega.Views
 
         }
 
-        private void CargarDescripcion(object sender, EventArgs e)
+        private void CheckCodigoBodega(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtCodigo.Text))
-            {
-                if (MovimientoBusiness.CheckProducto(Int32.Parse(txtCodigo.Text), true))
-                {
-                    var data = MovimientoBusiness.GetDescProductos(Int32.Parse(txtCodigo.Text));
-                    lblDescripcion.Text = data.descripcion;
-                    lblPartePlano.Text = data.parte_plano;
-                    this.id_prod = data.id_producto;
-                    lblStock.Text = data.stock.ToString();
-                    this.unidad = data.unidad;
-                    if (this.unidad)
-                    {
-                        lblUnidad.Text = "Unid";
-                    }
-                    else
-                    {
-                        lblUnidad.Text = "Mts";
-                    }
-                    var img = MovimientoBusiness.GetImages(Int32.Parse(txtCodigo.Text));
-                    if (img != null)
-                    {
-                        pictureBoxProducto.Load(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/Assets/imgProductos/" + img.image);
-                    }
-                    else
-                    {
-                        pictureBoxProducto.Load(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/Assets/logos/image-unavailable.png");
-                    }
-
-                }
-                else
-                {
-                    AlertMessage("Error, el código de producto ingresado no se encuentra en el sistema.", MessageBoxIcon.Error);
-                    CleanData();
-                    txtCodigo.Focus();
-                }
-            }
-            else
+            if (string.IsNullOrWhiteSpace(txtCodigo.Text))
             {
                 AlertMessage("Por favor ingrese un código de producto.", MessageBoxIcon.Error);
                 CleanData();
                 txtCodigo.Focus();
+            }
+        }
+
+        private void CargarDescripcion(object sender, EventArgs e)
+        {
+
+            if (!string.IsNullOrWhiteSpace(txtCodigo.Text))
+            {
+                //Chequea si existe conexión con la BD
+                if (MovimientoBusiness.CheckDBConnection(true))
+                {
+                    if (MovimientoBusiness.CheckProducto(Int64.Parse(txtCodigo.Text), true))
+                    {
+                        var data = MovimientoBusiness.GetDescProductos(Int64.Parse(txtCodigo.Text));
+                        lblDescripcion.Text = data.descripcion;
+                        lblPartePlano.Text = data.parte_plano;
+                        this.id_prod = data.id_producto;
+                        lblStock.Text = data.stock.ToString();
+                        this.unidad = data.unidad;
+
+                        if (this.unidad)
+                            lblUnidad.Text = "Unidad";
+                        else
+                            lblUnidad.Text = "Metros";
+
+                        var img = MovimientoBusiness.GetImages(Int64.Parse(txtCodigo.Text));
+                        
+                        if (img != null)
+                            pictureBoxProducto.Load(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/Assets/imgProductos/" + img.image);
+                        else
+                            pictureBoxProducto.Load(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/Assets/logos/image-unavailable.png");
+
+                    }
+                    else
+                    {
+                        AlertMessage("Error, el código de producto ingresado no se encuentra en el sistema.", MessageBoxIcon.Error);
+                        CleanData();
+                        txtCodigo.Focus();
+                    }
+                }
             }
         }
 
@@ -111,7 +115,7 @@ namespace ConvertecControlBodega.Views
             txtCant.Text = "1";
             txtObsSalida.Clear();
 
-            this.id_prod = 0;
+            this.id_prod = -1;
             lblDescripcion.Text = "";
             lblPartePlano.Text = "";
             lblStock.Text = "";
@@ -142,17 +146,12 @@ namespace ConvertecControlBodega.Views
                         prodSalList.Add(prodSalida);
                     }
                 }
-                var result = MessageBox.Show("Si continua se guardarán los elementos que se encuentran en las lista.\nDesea confirmar?"
+                var result = MessageBox.Show("Desea finalizar y confirmar el proceso?"
                                 , "Confirmación de guardado.", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-                if (result == DialogResult.Yes)
+                if (result == DialogResult.Yes && MovimientoBusiness.CheckDBConnection(true))
                 {
                     MovimientoBusiness.InsertSalida(prodSalList);
-
-                    /* if (System.Windows.Forms.Application.OpenForms["Principal"] != null)
-                     {
-                         (System.Windows.Forms.Application.OpenForms["Principal"] as Principal).PopulateData();
-                     }*/
                     IngresoTrabajador ingreso = new IngresoTrabajador();
                     ingreso.Show();
                     this.Hide();
@@ -235,7 +234,7 @@ namespace ConvertecControlBodega.Views
                         break;
                     }
                 }
-                else if (row.Cells["id_producto"].Value.ToString().Equals(this.id_prod))
+                else if (row.Cells["id_producto"].Value.ToString().Equals(this.id_prod.ToString()))
                 {
                     var sumCantidad = Double.Parse(txtCant.Text) + Double.Parse(row.Cells["cantidad"].Value.ToString());
 
@@ -258,6 +257,23 @@ namespace ConvertecControlBodega.Views
                         break;
                     }
                 }
+            }
+        }
+
+        private void btnQuitar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int selectedIndex = dataGridViewProdSalientes.CurrentCell.RowIndex;
+                if (selectedIndex > -1)
+                {
+                    dataGridViewProdSalientes.Rows.RemoveAt(selectedIndex);
+                    dataGridViewProdSalientes.Refresh();
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Debe seleccionar una fila para quitar.", "Error al quitar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

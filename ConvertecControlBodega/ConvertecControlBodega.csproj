@@ -109,24 +109,6 @@
   <ItemGroup>
     <Compile Include="Business\MovimientoBusiness.cs" />
     <Compile Include="Model\MovimientosDTO.cs" />
-    <Compile Include="Views\BuscadorProductos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\BuscadorProductos.Designer.cs">
-      <DependentUpon>BuscadorProductos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\FormDisplayProducto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\FormDisplayProducto.Designer.cs">
-      <DependentUpon>FormDisplayProducto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\FormIngreso.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\FormIngreso.Designer.cs">
-      <DependentUpon>FormIngreso.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\IngresoTrabajador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,12 +120,6 @@
     </Compile>
     <Compile Include="Views\FormSalida.Designer.cs">
       <DependentUpon>FormSalida.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Principal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Principal.Designer.cs">
-      <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\BodegaModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -186,23 +162,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Views\BuscadorProductos.resx">
-      <DependentUpon>BuscadorProductos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\FormDisplayProducto.resx">
-      <DependentUpon>FormDisplayProducto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\FormIngreso.resx">
-      <DependentUpon>FormIngreso.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\IngresoTrabajador.resx">
       <DependentUpon>IngresoTrabajador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormSalida.resx">
       <DependentUpon>FormSalida.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Principal.resx">
-      <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

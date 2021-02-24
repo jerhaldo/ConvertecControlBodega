@@ -1,11 +1,48 @@
 ﻿using ConvertecControlBodega.Model;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace ConvertecControlBodega.Business
 {
     class MovimientoBusiness
     {
+        public static bool CheckDBConnection(bool showError)
+        {
+            using (var db = new ConvertecBodegaEntities())
+            {
+                try
+                {
+                    Cursor.Current = Cursors.WaitCursor;
+                    db.Database.Connection.Open();
+                    if (db.Database.Connection.State == ConnectionState.Open)
+                    {
+                        System.Console.WriteLine(@"INFO: ConnectionString: " + db.Database.Connection.ConnectionString 
+                            + "\n DataBase: " + db.Database.Connection.Database 
+                            + "\n DataSource: " + db.Database.Connection.DataSource 
+                            + "\n ServerVersion: " + db.Database.Connection.ServerVersion 
+                            + "\n TimeOut: " + db.Database.Connection.ConnectionTimeout);
+                        db.Database.Connection.Close();
+                        Cursor.Current = Cursors.Default;
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                catch (SqlException ex)
+                {
+                    Cursor.Current = Cursors.Default;
+                    if (showError)
+                    {
+                        MessageBox.Show(ex.Message, "Error en conexión con el servidor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    return false;
+                }
+            }
+        }
+
         public static List<MovSalidasDataGridDTO> GetMovimientosSalidas()
         {
             using (var db = new ConvertecBodegaEntities())
@@ -72,16 +109,23 @@ namespace ConvertecControlBodega.Business
         {
             using (var db = new ConvertecBodegaEntities())
             {
-                var data = (
-                    from t in db.Trabajador
-                    select new IdTrabajdor
-                    {
-                        id_trabajador = t.id_trabajador
-                    }
-                ).ToList();
+                var data = new List<IdTrabajdor>();
+                try
+                {
+                    data = (
+                        from t in db.Trabajador
+                        select new IdTrabajdor
+                        {
+                            id_trabajador = t.id_trabajador
+                        }
+                    ).ToList();       
+                }
+                catch (System.Data.Entity.Core.EntityException ex)
+                {
+                    System.Console.WriteLine("Property: {0} throws Error: {1}", ex.Source, ex.Message);
+                }
 
                 db.Dispose();
-
                 return data;
             }
         }
@@ -90,14 +134,22 @@ namespace ConvertecControlBodega.Business
         {
             using (var db = new ConvertecBodegaEntities())
             {
-                var data = (
-                    from m in db.Movimiento
-                    orderby m.ot
-                    select new NumeroOt
-                    {
-                        ot = m.ot
-                    }
-                ).ToList();
+                var data = new List<NumeroOt>();
+                try
+                {
+                    data = (
+                        from m in db.Movimiento
+                        orderby m.ot
+                        select new NumeroOt
+                        {
+                            ot = m.ot
+                        }
+                    ).ToList();
+                }
+                catch (System.Data.Entity.Core.EntityException ex)
+                {
+                    System.Console.WriteLine("Property: {0} throws Error: {1}", ex.Data, ex.Message);
+                }
 
                 db.Dispose();
 
@@ -173,7 +225,7 @@ namespace ConvertecControlBodega.Business
             }
         }
 
-        public static DescProducto GetDescProductos(int cod)
+        public static DescProducto GetDescProductos(long cod)
         {
             using (var db = new ConvertecBodegaEntities())
             {
@@ -202,7 +254,7 @@ namespace ConvertecControlBodega.Business
             }
         }
 
-        public static DescProductoDetalle GetDescProductosDetalle(int cod)
+        public static DescProductoDetalle GetDescProductosDetalle(long cod)
         {
             using (var db = new ConvertecBodegaEntities())
             {
@@ -230,7 +282,7 @@ namespace ConvertecControlBodega.Business
             }
         }
 
-        public static bool CheckProducto(int cod, bool disponible)
+        public static bool CheckProducto(long cod, bool disponible)
         {
             using (var db = new ConvertecBodegaEntities())
             {
@@ -254,7 +306,7 @@ namespace ConvertecControlBodega.Business
             }
         }
 
-        public static ImagesProducto GetImages(int cod)
+        public static ImagesProducto GetImages(long cod)
         {
             using (var db = new ConvertecBodegaEntities())
             {
@@ -336,17 +388,6 @@ namespace ConvertecControlBodega.Business
             } else
             {
                 return true;
-            }
-        }
-
-        public static string GetDisponibilidad(bool borrado)
-        {
-            if (borrado)
-            {
-                return "No";
-            } else
-            {
-                return "Si";
             }
         }
 
