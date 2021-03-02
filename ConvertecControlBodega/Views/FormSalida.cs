@@ -17,7 +17,7 @@ namespace ConvertecControlBodega.Views
             AutoCompleteTextID();
             lblIdValue.Text = id;
             lblOtValue.Text = ot;
-            pictureBoxProducto.Load(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/Assets/logos/image-unavailable.png");
+            pictureBoxProducto.Image = Properties.Resources.image_unavailable;
         }
 
         private void FormSalida_Load(object sender, EventArgs e)
@@ -82,12 +82,12 @@ namespace ConvertecControlBodega.Views
                             catch (System.IO.FileNotFoundException)
                             {
                                 AlertMessage("Error al cargar imagen.", MessageBoxIcon.Error);
-                                pictureBoxProducto.Load(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/Assets/logos/image-unavailable.png");
+                                pictureBoxProducto.Image = Properties.Resources.image_unavailable;
                             }
                             
                         //pictureBoxProducto.Load(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/Assets/imgProductos/" + img.image);
                         else
-                            pictureBoxProducto.Load(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/Assets/logos/image-unavailable.png");
+                            pictureBoxProducto.Image = Properties.Resources.image_unavailable;
 
                     }
                     else

@@ -7,7 +7,7 @@
     <ProjectGuid>{DFFC2FF5-4838-46A8-981B-C59FD05B8E1A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ConvertecControlBodega</RootNamespace>
-    <AssemblyName>ConvertecControlBodega</AssemblyName>
+    <AssemblyName>Convertec Control Bodega</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -176,6 +176,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EntityDeploy Include="Model\BodegaModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -225,26 +226,26 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\logos\739aca6e-bcbd-47ca-97ef-136bc7f406a1.png" />
-    <Content Include="Assets\logos\b0fd0ba3-6f9b-4370-bb2b-e4c9f8aa40bd.png" />
-    <Content Include="Assets\logos\convertec_icon.png" />
-    <Content Include="Assets\logos\convertec_icon_bw.png" />
-    <Content Include="Assets\logos\favicon.ico">
+    <Content Include="Assets\Logos\739aca6e-bcbd-47ca-97ef-136bc7f406a1.png" />
+    <Content Include="Assets\Logos\b0fd0ba3-6f9b-4370-bb2b-e4c9f8aa40bd.png" />
+    <Content Include="Assets\Logos\convertec_icon.png" />
+    <Content Include="Assets\Logos\convertec_icon_bw.png" />
+    <Content Include="Assets\Logos\favicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\logos\image-unavailable.png">
+    <Content Include="Assets\Logos\image-unavailable.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\logos\image-unavailable_650-350.png">
+    <Content Include="Assets\Logos\image-unavailable_650-350.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\logos\imageedit_5_9066887911.png" />
-    <Content Include="Assets\logos\logo - copia.png" />
-    <Content Include="Assets\logos\logo%402x.png" />
-    <Content Include="Assets\logos\logo.png" />
-    <Content Include="Assets\logos\logo_completo.jpg" />
-    <Content Include="Assets\logos\logo_completo.png" />
-    <Content Include="Assets\logos\logo_completo_bw.png" />
+    <Content Include="Assets\Logos\imageedit_5_9066887911.png" />
+    <Content Include="Assets\Logos\logo - copia.png" />
+    <Content Include="Assets\Logos\logo%402x.png" />
+    <Content Include="Assets\Logos\logo.png" />
+    <Content Include="Assets\Logos\logo_completo.jpg" />
+    <Content Include="Assets\Logos\logo_completo.png" />
+    <Content Include="Assets\Logos\logo_completo_bw.png" />
     <Content Include="favicon.ico" />
     <Content Include="Model\BodegaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
