@@ -11,7 +11,7 @@
           </Key>
           <Property Name="id_image" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_producto" Type="int" Nullable="false" />
-          <Property Name="image" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="image" Type="varchar" MaxLength="512" Nullable="false" />
         </EntityType>
         <EntityType Name="Ingreso_Prod">
           <Key>
@@ -303,7 +303,7 @@
           </Key>
           <Property Name="id_image" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_producto" Type="Int32" Nullable="false" />
-          <Property Name="image" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Producto" Relationship="ConvertecBodegaModel.FK_Imagen_Producto_Producto" FromRole="Imagen_Producto" ToRole="Producto" />
         </EntityType>
         <EntityType Name="Ingreso_Prod">

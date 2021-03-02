@@ -225,27 +225,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\imgProductos\AMPERÍMETRO ANÁLAOGO DC +-100A 50mV %282%29.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\imgProductos\AMPERÍMETRO ANÁLOGO DC 100A 50mV GR96 %281%29.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\imgProductos\AMPERÍMETRO ANÁLOGO DC 50A 50mV GR96 240º %281%29.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\imgProductos\CAPACITOR ELECTROLÍTICO 33.000 uF 100V.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\imgProductos\CONTACTOR GLP1-D4011 24VCC.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\imgProductos\DISIPASOR MSN 180.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\imgProductos\WB3U414U01 %280-500V AC%29.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Assets\logos\739aca6e-bcbd-47ca-97ef-136bc7f406a1.png" />
     <Content Include="Assets\logos\b0fd0ba3-6f9b-4370-bb2b-e4c9f8aa40bd.png" />
     <Content Include="Assets\logos\convertec_icon.png" />

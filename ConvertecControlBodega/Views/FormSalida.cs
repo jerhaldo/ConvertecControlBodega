@@ -1,6 +1,7 @@
 ﻿using ConvertecControlBodega.Business;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ConvertecControlBodega.Views
@@ -74,7 +75,17 @@ namespace ConvertecControlBodega.Views
                         var img = MovimientoBusiness.GetImages(Int64.Parse(txtCodigo.Text));
                         
                         if (img != null)
-                            pictureBoxProducto.Load(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/Assets/imgProductos/" + img.image);
+                            try
+                            {
+                                pictureBoxProducto.Image = Image.FromFile(@"D:\OneDrive\ConvertecImages\ImgProductos\" + img.image);
+                            }
+                            catch (System.IO.FileNotFoundException)
+                            {
+                                AlertMessage("Error al cargar imagen.", MessageBoxIcon.Error);
+                                pictureBoxProducto.Load(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/Assets/logos/image-unavailable.png");
+                            }
+                            
+                        //pictureBoxProducto.Load(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/Assets/imgProductos/" + img.image);
                         else
                             pictureBoxProducto.Load(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/Assets/logos/image-unavailable.png");
 
