@@ -9,7 +9,8 @@ namespace ConvertecControlBodega.Views
     public partial class FormSalida : System.Windows.Forms.Form
     {
         private bool unidad;
-        private int id_prod = -1;
+        private int idProd = -1;
+        private int idTrabajador;
 
         public FormSalida(String id, String ot)
         {
@@ -22,10 +23,10 @@ namespace ConvertecControlBodega.Views
 
         private void FormSalida_Load(object sender, EventArgs e)
         {
-            //Genera folio a partir de la fecha 20/01/2021 => 20012021
-            lblFolioValue.Text = DateTime.Now.ToString("d").Replace("/", "");
-            var idTrabajador = Int32.Parse(lblIdValue.Text);
-            lblNombreValue.Text = $"{MovimientoBusiness.GetNombre(idTrabajador).nombre} {MovimientoBusiness.GetNombre(idTrabajador).apellidos}";
+            //Genera folio a partir de la fecha Ej: 20/01/2021 => 20012021
+            lblFolioValue.Text = DateTime.Now.ToString("ddMMyyyy");
+            this.idTrabajador = Int32.Parse(lblIdValue.Text);
+            lblNombreValue.Text = $"{MovimientoBusiness.GetNombre(this.idTrabajador).nombre} {MovimientoBusiness.GetNombre(idTrabajador).apellidos}";
         }
 
         private void AutoCompleteTextID()
@@ -63,7 +64,7 @@ namespace ConvertecControlBodega.Views
                         var data = MovimientoBusiness.GetDescProductos(Int64.Parse(txtCodigo.Text));
                         lblDescripcion.Text = data.descripcion;
                         lblPartePlano.Text = data.parte_plano;
-                        this.id_prod = data.id_producto;
+                        this.idProd = data.id_producto;
                         lblStock.Text = data.stock.ToString();
                         this.unidad = data.unidad;
 
@@ -126,12 +127,12 @@ namespace ConvertecControlBodega.Views
             txtCant.Text = "1";
             txtObsSalida.Clear();
 
-            this.id_prod = -1;
+            this.idProd = -1;
             lblDescripcion.Text = "";
             lblPartePlano.Text = "";
             lblStock.Text = "";
             lblUnidad.Text = "";
-            pictureBoxProducto.Load(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/Assets/logos/image-unavailable.png");
+            pictureBoxProducto.Image = Properties.Resources.image_unavailable;
         }
 
         private void BtnConfirmar_Click(object sender, EventArgs e)
@@ -151,7 +152,7 @@ namespace ConvertecControlBodega.Views
                             ot = lblOtValue.Text,
                             cantidad = Double.Parse(row.Cells["cantidad"].Value.ToString()),
                             obs_mov = row.Cells["obs_mov"].Value.ToString(),
-                            id_trabajador = Int32.Parse(lblIdValue.Text),
+                            id_trabajador = this.idTrabajador,
                             folio = Int32.Parse(lblFolioValue.Text)
                         };
                         prodSalList.Add(prodSalida);
@@ -187,7 +188,8 @@ namespace ConvertecControlBodega.Views
         {
             if (!this.unidad)
             {
-                if (!decimal.TryParse(txtCant.Text.ToString().Replace(",", "."), out decimal cantidad))
+                txtCant.Text = txtCant.Text.Replace(".", ",");
+                if (!decimal.TryParse(txtCant.Text, out decimal cantidad))
                 {
                     AlertMessage("Por favor ingrese un número válido.", MessageBoxIcon.Error);
                     txtCant.Text = "1";
@@ -233,7 +235,7 @@ namespace ConvertecControlBodega.Views
                 {
                     if (MovimientoBusiness.GetDisponibilidad(Double.Parse(lblStock.Text), Double.Parse(txtCant.Text)))
                     {
-                        dataGridViewProdSalientes.Rows.Add(this.id_prod, txtCodigo.Text, lblDescripcion.Text, txtCant.Text, DateTime.Now, txtObsSalida.Text);
+                        dataGridViewProdSalientes.Rows.Add(this.idProd, txtCodigo.Text, lblDescripcion.Text, txtCant.Text, DateTime.Now, txtObsSalida.Text);
                         CleanData();
                         txtCodigo.Focus();
                         break;
@@ -245,7 +247,7 @@ namespace ConvertecControlBodega.Views
                         break;
                     }
                 }
-                else if (row.Cells["id_producto"].Value.ToString().Equals(this.id_prod.ToString()))
+                else if (row.Cells["id_producto"].Value.ToString().Equals(this.idProd.ToString()))
                 {
                     var sumCantidad = Double.Parse(txtCant.Text) + Double.Parse(row.Cells["cantidad"].Value.ToString());
 
@@ -282,9 +284,14 @@ namespace ConvertecControlBodega.Views
                     dataGridViewProdSalientes.Refresh();
                 }
             }
-            catch (InvalidOperationException)
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe seleccionar una fila para quitar.", "Error al quitar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (ex is InvalidOperationException || ex is NullReferenceException)
+                {
+                    MessageBox.Show("Debe seleccionar una fila para quitar.", "Error al quitar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                throw;
             }
         }
     }

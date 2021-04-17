@@ -7,7 +7,7 @@ namespace ConvertecControlBodega.Model
         public Nullable<long> cod_bodega { get; set; }
         public string descripcion { get; set; }
         public double cantidad { get; set; }
-        public System.DateTime fecha_mov { get; set; }
+        public DateTime fecha_mov { get; set; }
         public string ot { get; set; }
         public string nombre { get; set; }
         public string apellidos { get; set; }
@@ -25,7 +25,7 @@ namespace ConvertecControlBodega.Model
         public Nullable<int> valor_unitario { get; set; }
         public string nom_proveedor { get; set; }
         public string nom_marca { get; set; }
-        public System.DateTime fecha_mov { get; set; }
+        public DateTime fecha_mov { get; set; }
         public string parte_plano { get; set; }
         public string ot { get; set; }
         public string obs_mov { get; set; }
@@ -41,7 +41,7 @@ namespace ConvertecControlBodega.Model
         public string nom_marca { get; set; }
         public double stock { get; set; }
         public int valor { get; set; }
-        public System.DateTime ult_fecha_compra { get; set; }
+        public DateTime ult_fecha_compra { get; set; }
 
     }
 
@@ -92,7 +92,7 @@ namespace ConvertecControlBodega.Model
         public string obs { get; set; }
         public string image { get; set; }
         public double stock { get; set; }
-        public System.DateTime ult_fecha_compra { get; set; }
+        public DateTime ult_fecha_compra { get; set; }
         public bool borrado { get; set; }
 
     }

@@ -70,6 +70,8 @@
           <Property Name="nom_proveedor" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="telefono" Type="varchar" MaxLength="50" />
           <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="vendedor" Type="varchar" MaxLength="50" />
+          <Property Name="rut_empresa" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Salida_Prod">
           <Key>
@@ -251,60 +253,14 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ConvertecBodegaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="ConvertecBodegaEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Imagen_Producto" EntityType="ConvertecBodegaModel.Imagen_Producto" />
-          <EntitySet Name="Ingreso_Prod" EntityType="ConvertecBodegaModel.Ingreso_Prod" />
-          <EntitySet Name="Marca" EntityType="ConvertecBodegaModel.Marca" />
-          <EntitySet Name="Movimiento" EntityType="ConvertecBodegaModel.Movimiento" />
-          <EntitySet Name="Producto" EntityType="ConvertecBodegaModel.Producto" />
-          <EntitySet Name="Proveedor" EntityType="ConvertecBodegaModel.Proveedor" />
-          <EntitySet Name="Salida_Prod" EntityType="ConvertecBodegaModel.Salida_Prod" />
-          <EntitySet Name="Trabajador" EntityType="ConvertecBodegaModel.Trabajador" />
-          <AssociationSet Name="FK_Imagen_Producto_Producto" Association="ConvertecBodegaModel.FK_Imagen_Producto_Producto">
-            <End Role="Producto" EntitySet="Producto" />
-            <End Role="Imagen_Producto" EntitySet="Imagen_Producto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ingreso_Prod_Marca" Association="ConvertecBodegaModel.FK_Ingreso_Prod_Marca">
-            <End Role="Marca" EntitySet="Marca" />
-            <End Role="Ingreso_Prod" EntitySet="Ingreso_Prod" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ingreso_Prod_Movimiento" Association="ConvertecBodegaModel.FK_Ingreso_Prod_Movimiento">
-            <End Role="Movimiento" EntitySet="Movimiento" />
-            <End Role="Ingreso_Prod" EntitySet="Ingreso_Prod" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ingreso_Prod_Proveedor" Association="ConvertecBodegaModel.FK_Ingreso_Prod_Proveedor">
-            <End Role="Proveedor" EntitySet="Proveedor" />
-            <End Role="Ingreso_Prod" EntitySet="Ingreso_Prod" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Producto_Marca" Association="ConvertecBodegaModel.FK_Producto_Marca">
-            <End Role="Marca" EntitySet="Marca" />
-            <End Role="Producto" EntitySet="Producto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Movimiento_Producto" Association="ConvertecBodegaModel.FK_Movimiento_Producto">
-            <End Role="Producto" EntitySet="Producto" />
-            <End Role="Movimiento" EntitySet="Movimiento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Salida_Prod_Movimiento" Association="ConvertecBodegaModel.FK_Salida_Prod_Movimiento">
-            <End Role="Movimiento" EntitySet="Movimiento" />
-            <End Role="Salida_Prod" EntitySet="Salida_Prod" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Producto_Proveedor" Association="ConvertecBodegaModel.FK_Producto_Proveedor">
-            <End Role="Proveedor" EntitySet="Proveedor" />
-            <End Role="Producto" EntitySet="Producto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Salida_Prod_Trabajador" Association="ConvertecBodegaModel.FK_Salida_Prod_Trabajador">
-            <End Role="Trabajador" EntitySet="Trabajador" />
-            <End Role="Salida_Prod" EntitySet="Salida_Prod" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="Imagen_Producto">
           <Key>
             <PropertyRef Name="id_image" />
           </Key>
           <Property Name="id_image" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_producto" Type="Int32" Nullable="false" />
-          <Property Name="image" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Producto" Relationship="ConvertecBodegaModel.FK_Imagen_Producto_Producto" FromRole="Imagen_Producto" ToRole="Producto" />
+          <Property Name="image" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Imagen_Producto_Producto" FromRole="Imagen_Producto" ToRole="Producto" />
         </EntityType>
         <EntityType Name="Ingreso_Prod">
           <Key>
@@ -317,18 +273,18 @@
           <Property Name="documento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="valor" Type="Int32" Nullable="false" />
           <Property Name="valor_unitario" Type="Int32" />
-          <NavigationProperty Name="Marca" Relationship="ConvertecBodegaModel.FK_Ingreso_Prod_Marca" FromRole="Ingreso_Prod" ToRole="Marca" />
-          <NavigationProperty Name="Movimiento" Relationship="ConvertecBodegaModel.FK_Ingreso_Prod_Movimiento" FromRole="Ingreso_Prod" ToRole="Movimiento" />
-          <NavigationProperty Name="Proveedor" Relationship="ConvertecBodegaModel.FK_Ingreso_Prod_Proveedor" FromRole="Ingreso_Prod" ToRole="Proveedor" />
+          <NavigationProperty Name="Marca" Relationship="Self.FK_Ingreso_Prod_Marca" FromRole="Ingreso_Prod" ToRole="Marca" />
+          <NavigationProperty Name="Movimiento" Relationship="Self.FK_Ingreso_Prod_Movimiento" FromRole="Ingreso_Prod" ToRole="Movimiento" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.FK_Ingreso_Prod_Proveedor" FromRole="Ingreso_Prod" ToRole="Proveedor" />
         </EntityType>
         <EntityType Name="Marca">
           <Key>
             <PropertyRef Name="id_marca" />
           </Key>
           <Property Name="id_marca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nom_marca" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Ingreso_Prod" Relationship="ConvertecBodegaModel.FK_Ingreso_Prod_Marca" FromRole="Marca" ToRole="Ingreso_Prod" />
-          <NavigationProperty Name="Producto" Relationship="ConvertecBodegaModel.FK_Producto_Marca" FromRole="Marca" ToRole="Producto" />
+          <Property Name="nom_marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Ingreso_Prod" Relationship="Self.FK_Ingreso_Prod_Marca" FromRole="Marca" ToRole="Ingreso_Prod" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_Marca" FromRole="Marca" ToRole="Producto" />
         </EntityType>
         <EntityType Name="Movimiento">
           <Key>
@@ -340,9 +296,9 @@
           <Property Name="ot" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="cantidad" Type="Double" Nullable="false" />
           <Property Name="obs_mov" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Ingreso_Prod" Relationship="ConvertecBodegaModel.FK_Ingreso_Prod_Movimiento" FromRole="Movimiento" ToRole="Ingreso_Prod" />
-          <NavigationProperty Name="Producto" Relationship="ConvertecBodegaModel.FK_Movimiento_Producto" FromRole="Movimiento" ToRole="Producto" />
-          <NavigationProperty Name="Salida_Prod" Relationship="ConvertecBodegaModel.FK_Salida_Prod_Movimiento" FromRole="Movimiento" ToRole="Salida_Prod" />
+          <NavigationProperty Name="Ingreso_Prod" Relationship="Self.FK_Ingreso_Prod_Movimiento" FromRole="Movimiento" ToRole="Ingreso_Prod" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Movimiento_Producto" FromRole="Movimiento" ToRole="Producto" />
+          <NavigationProperty Name="Salida_Prod" Relationship="Self.FK_Salida_Prod_Movimiento" FromRole="Movimiento" ToRole="Salida_Prod" />
         </EntityType>
         <EntityType Name="Producto">
           <Key>
@@ -352,8 +308,9 @@
           <Property Name="id_proveedor" Type="Int32" Nullable="false" />
           <Property Name="id_marca" Type="Int32" Nullable="false" />
           <Property Name="cod_bodega" Type="Int64" />
-          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="stock" Type="Double" Nullable="false" />
+          <Property Name="stock_min" Type="Double" Nullable="false" />
           <Property Name="valor" Type="Int32" Nullable="false" />
           <Property Name="valor_unitario" Type="Int32" />
           <Property Name="unidad" Type="Boolean" Nullable="false" />
@@ -361,22 +318,23 @@
           <Property Name="parte_plano" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="obs" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="borrado" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Imagen_Producto" Relationship="ConvertecBodegaModel.FK_Imagen_Producto_Producto" FromRole="Producto" ToRole="Imagen_Producto" />
-          <NavigationProperty Name="Marca" Relationship="ConvertecBodegaModel.FK_Producto_Marca" FromRole="Producto" ToRole="Marca" />
-          <NavigationProperty Name="Movimiento" Relationship="ConvertecBodegaModel.FK_Movimiento_Producto" FromRole="Producto" ToRole="Movimiento" />
-          <NavigationProperty Name="Proveedor" Relationship="ConvertecBodegaModel.FK_Producto_Proveedor" FromRole="Producto" ToRole="Proveedor" />
-          <Property Name="stock_min" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Imagen_Producto" Relationship="Self.FK_Imagen_Producto_Producto" FromRole="Producto" ToRole="Imagen_Producto" />
+          <NavigationProperty Name="Marca" Relationship="Self.FK_Producto_Marca" FromRole="Producto" ToRole="Marca" />
+          <NavigationProperty Name="Movimiento" Relationship="Self.FK_Movimiento_Producto" FromRole="Producto" ToRole="Movimiento" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.FK_Producto_Proveedor" FromRole="Producto" ToRole="Proveedor" />
         </EntityType>
         <EntityType Name="Proveedor">
           <Key>
             <PropertyRef Name="id_proveedor" />
           </Key>
           <Property Name="id_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nom_proveedor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nom_proveedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Ingreso_Prod" Relationship="ConvertecBodegaModel.FK_Ingreso_Prod_Proveedor" FromRole="Proveedor" ToRole="Ingreso_Prod" />
-          <NavigationProperty Name="Producto" Relationship="ConvertecBodegaModel.FK_Producto_Proveedor" FromRole="Proveedor" ToRole="Producto" />
+          <NavigationProperty Name="Ingreso_Prod" Relationship="Self.FK_Ingreso_Prod_Proveedor" FromRole="Proveedor" ToRole="Ingreso_Prod" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_Proveedor" FromRole="Proveedor" ToRole="Producto" />
+          <Property Name="vendedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rut_empresa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Salida_Prod">
           <Key>
@@ -385,23 +343,23 @@
           <Property Name="id_mov" Type="Int64" Nullable="false" />
           <Property Name="id_trabajador" Type="Int32" Nullable="false" />
           <Property Name="folio" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Movimiento" Relationship="ConvertecBodegaModel.FK_Salida_Prod_Movimiento" FromRole="Salida_Prod" ToRole="Movimiento" />
-          <NavigationProperty Name="Trabajador" Relationship="ConvertecBodegaModel.FK_Salida_Prod_Trabajador" FromRole="Salida_Prod" ToRole="Trabajador" />
+          <NavigationProperty Name="Movimiento" Relationship="Self.FK_Salida_Prod_Movimiento" FromRole="Salida_Prod" ToRole="Movimiento" />
+          <NavigationProperty Name="Trabajador" Relationship="Self.FK_Salida_Prod_Trabajador" FromRole="Salida_Prod" ToRole="Trabajador" />
         </EntityType>
         <EntityType Name="Trabajador">
           <Key>
             <PropertyRef Name="id_trabajador" />
           </Key>
           <Property Name="id_trabajador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="apellidos" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Salida_Prod" Relationship="ConvertecBodegaModel.FK_Salida_Prod_Trabajador" FromRole="Trabajador" ToRole="Salida_Prod" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellidos" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Salida_Prod" Relationship="Self.FK_Salida_Prod_Trabajador" FromRole="Trabajador" ToRole="Salida_Prod" />
         </EntityType>
         <Association Name="FK_Imagen_Producto_Producto">
-          <End Type="ConvertecBodegaModel.Producto" Role="Producto" Multiplicity="1">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="ConvertecBodegaModel.Imagen_Producto" Role="Imagen_Producto" Multiplicity="*" />
+          <End Role="Imagen_Producto" Type="Self.Imagen_Producto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Producto">
               <PropertyRef Name="id_producto" />
@@ -412,8 +370,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ingreso_Prod_Marca">
-          <End Type="ConvertecBodegaModel.Marca" Role="Marca" Multiplicity="1" />
-          <End Type="ConvertecBodegaModel.Ingreso_Prod" Role="Ingreso_Prod" Multiplicity="*" />
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Ingreso_Prod" Type="Self.Ingreso_Prod" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Marca">
               <PropertyRef Name="id_marca" />
@@ -424,10 +382,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ingreso_Prod_Movimiento">
-          <End Type="ConvertecBodegaModel.Movimiento" Role="Movimiento" Multiplicity="1">
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="ConvertecBodegaModel.Ingreso_Prod" Role="Ingreso_Prod" Multiplicity="0..1" />
+          <End Role="Ingreso_Prod" Type="Self.Ingreso_Prod" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Movimiento">
               <PropertyRef Name="id_mov" />
@@ -438,8 +396,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ingreso_Prod_Proveedor">
-          <End Type="ConvertecBodegaModel.Proveedor" Role="Proveedor" Multiplicity="1" />
-          <End Type="ConvertecBodegaModel.Ingreso_Prod" Role="Ingreso_Prod" Multiplicity="*" />
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
+          <End Role="Ingreso_Prod" Type="Self.Ingreso_Prod" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Proveedor">
               <PropertyRef Name="id_proveedor" />
@@ -450,8 +408,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Producto_Marca">
-          <End Type="ConvertecBodegaModel.Marca" Role="Marca" Multiplicity="1" />
-          <End Type="ConvertecBodegaModel.Producto" Role="Producto" Multiplicity="*" />
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Marca">
               <PropertyRef Name="id_marca" />
@@ -462,8 +420,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Movimiento_Producto">
-          <End Type="ConvertecBodegaModel.Producto" Role="Producto" Multiplicity="1" />
-          <End Type="ConvertecBodegaModel.Movimiento" Role="Movimiento" Multiplicity="*" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Producto">
               <PropertyRef Name="id_producto" />
@@ -474,10 +432,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Salida_Prod_Movimiento">
-          <End Type="ConvertecBodegaModel.Movimiento" Role="Movimiento" Multiplicity="1">
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="ConvertecBodegaModel.Salida_Prod" Role="Salida_Prod" Multiplicity="0..1" />
+          <End Role="Salida_Prod" Type="Self.Salida_Prod" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Movimiento">
               <PropertyRef Name="id_mov" />
@@ -488,8 +446,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Producto_Proveedor">
-          <End Type="ConvertecBodegaModel.Proveedor" Role="Proveedor" Multiplicity="1" />
-          <End Type="ConvertecBodegaModel.Producto" Role="Producto" Multiplicity="*" />
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Proveedor">
               <PropertyRef Name="id_proveedor" />
@@ -500,8 +458,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Salida_Prod_Trabajador">
-          <End Type="ConvertecBodegaModel.Trabajador" Role="Trabajador" Multiplicity="1" />
-          <End Type="ConvertecBodegaModel.Salida_Prod" Role="Salida_Prod" Multiplicity="*" />
+          <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="1" />
+          <End Role="Salida_Prod" Type="Self.Salida_Prod" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Trabajador">
               <PropertyRef Name="id_trabajador" />
@@ -511,7 +469,53 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+        <EntityContainer Name="ConvertecBodegaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Imagen_Producto" EntityType="Self.Imagen_Producto" />
+          <EntitySet Name="Ingreso_Prod" EntityType="Self.Ingreso_Prod" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" />
+          <EntitySet Name="Movimiento" EntityType="Self.Movimiento" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+          <EntitySet Name="Salida_Prod" EntityType="Self.Salida_Prod" />
+          <EntitySet Name="Trabajador" EntityType="Self.Trabajador" />
+          <AssociationSet Name="FK_Imagen_Producto_Producto" Association="Self.FK_Imagen_Producto_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Imagen_Producto" EntitySet="Imagen_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingreso_Prod_Marca" Association="Self.FK_Ingreso_Prod_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Ingreso_Prod" EntitySet="Ingreso_Prod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingreso_Prod_Movimiento" Association="Self.FK_Ingreso_Prod_Movimiento">
+            <End Role="Movimiento" EntitySet="Movimiento" />
+            <End Role="Ingreso_Prod" EntitySet="Ingreso_Prod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingreso_Prod_Proveedor" Association="Self.FK_Ingreso_Prod_Proveedor">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Ingreso_Prod" EntitySet="Ingreso_Prod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Marca" Association="Self.FK_Producto_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movimiento_Producto" Association="Self.FK_Movimiento_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Movimiento" EntitySet="Movimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Salida_Prod_Movimiento" Association="Self.FK_Salida_Prod_Movimiento">
+            <End Role="Movimiento" EntitySet="Movimiento" />
+            <End Role="Salida_Prod" EntitySet="Salida_Prod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Proveedor" Association="Self.FK_Producto_Proveedor">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Salida_Prod_Trabajador" Association="Self.FK_Salida_Prod_Trabajador">
+            <End Role="Trabajador" EntitySet="Trabajador" />
+            <End Role="Salida_Prod" EntitySet="Salida_Prod" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -520,90 +524,92 @@
           <EntitySetMapping Name="Imagen_Producto">
             <EntityTypeMapping TypeName="ConvertecBodegaModel.Imagen_Producto">
               <MappingFragment StoreEntitySet="Imagen_Producto">
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
                 <ScalarProperty Name="id_image" ColumnName="id_image" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="image" ColumnName="image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ingreso_Prod">
             <EntityTypeMapping TypeName="ConvertecBodegaModel.Ingreso_Prod">
               <MappingFragment StoreEntitySet="Ingreso_Prod">
-                <ScalarProperty Name="valor_unitario" ColumnName="valor_unitario" />
-                <ScalarProperty Name="valor" ColumnName="valor" />
-                <ScalarProperty Name="documento" ColumnName="documento" />
-                <ScalarProperty Name="cod_prod_prov" ColumnName="cod_prod_prov" />
-                <ScalarProperty Name="id_marca" ColumnName="id_marca" />
-                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
                 <ScalarProperty Name="id_mov" ColumnName="id_mov" />
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="id_marca" ColumnName="id_marca" />
+                <ScalarProperty Name="cod_prod_prov" ColumnName="cod_prod_prov" />
+                <ScalarProperty Name="documento" ColumnName="documento" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="valor_unitario" ColumnName="valor_unitario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Marca">
             <EntityTypeMapping TypeName="ConvertecBodegaModel.Marca">
               <MappingFragment StoreEntitySet="Marca">
-                <ScalarProperty Name="nom_marca" ColumnName="nom_marca" />
                 <ScalarProperty Name="id_marca" ColumnName="id_marca" />
+                <ScalarProperty Name="nom_marca" ColumnName="nom_marca" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Movimiento">
             <EntityTypeMapping TypeName="ConvertecBodegaModel.Movimiento">
               <MappingFragment StoreEntitySet="Movimiento">
-                <ScalarProperty Name="obs_mov" ColumnName="obs_mov" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="ot" ColumnName="ot" />
-                <ScalarProperty Name="fecha_mov" ColumnName="fecha_mov" />
-                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
                 <ScalarProperty Name="id_mov" ColumnName="id_mov" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="fecha_mov" ColumnName="fecha_mov" />
+                <ScalarProperty Name="ot" ColumnName="ot" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="obs_mov" ColumnName="obs_mov" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Producto">
             <EntityTypeMapping TypeName="ConvertecBodegaModel.Producto">
               <MappingFragment StoreEntitySet="Producto">
-                <ScalarProperty Name="stock_min" ColumnName="stock_min" />
-                <ScalarProperty Name="borrado" ColumnName="borrado" />
-                <ScalarProperty Name="obs" ColumnName="obs" />
-                <ScalarProperty Name="parte_plano" ColumnName="parte_plano" />
-                <ScalarProperty Name="ult_fecha_compra" ColumnName="ult_fecha_compra" />
-                <ScalarProperty Name="unidad" ColumnName="unidad" />
-                <ScalarProperty Name="valor_unitario" ColumnName="valor_unitario" />
-                <ScalarProperty Name="valor" ColumnName="valor" />
-                <ScalarProperty Name="stock" ColumnName="stock" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="cod_bodega" ColumnName="cod_bodega" />
-                <ScalarProperty Name="id_marca" ColumnName="id_marca" />
-                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
                 <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="id_marca" ColumnName="id_marca" />
+                <ScalarProperty Name="cod_bodega" ColumnName="cod_bodega" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+                <ScalarProperty Name="stock_min" ColumnName="stock_min" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="valor_unitario" ColumnName="valor_unitario" />
+                <ScalarProperty Name="unidad" ColumnName="unidad" />
+                <ScalarProperty Name="ult_fecha_compra" ColumnName="ult_fecha_compra" />
+                <ScalarProperty Name="parte_plano" ColumnName="parte_plano" />
+                <ScalarProperty Name="obs" ColumnName="obs" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Proveedor">
             <EntityTypeMapping TypeName="ConvertecBodegaModel.Proveedor">
               <MappingFragment StoreEntitySet="Proveedor">
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="nom_proveedor" ColumnName="nom_proveedor" />
+                <ScalarProperty Name="rut_empresa" ColumnName="rut_empresa" />
+                <ScalarProperty Name="vendedor" ColumnName="vendedor" />
                 <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="nom_proveedor" ColumnName="nom_proveedor" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="email" ColumnName="email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Salida_Prod">
             <EntityTypeMapping TypeName="ConvertecBodegaModel.Salida_Prod">
               <MappingFragment StoreEntitySet="Salida_Prod">
-                <ScalarProperty Name="folio" ColumnName="folio" />
-                <ScalarProperty Name="id_trabajador" ColumnName="id_trabajador" />
                 <ScalarProperty Name="id_mov" ColumnName="id_mov" />
+                <ScalarProperty Name="id_trabajador" ColumnName="id_trabajador" />
+                <ScalarProperty Name="folio" ColumnName="folio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Trabajador">
             <EntityTypeMapping TypeName="ConvertecBodegaModel.Trabajador">
               <MappingFragment StoreEntitySet="Trabajador">
-                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id_trabajador" ColumnName="id_trabajador" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

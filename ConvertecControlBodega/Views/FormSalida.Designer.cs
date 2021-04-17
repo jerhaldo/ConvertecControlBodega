@@ -32,8 +32,11 @@ namespace ConvertecControlBodega.Views
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSalida));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblFolio = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
@@ -681,28 +684,28 @@ namespace ConvertecControlBodega.Views
             this.cantidad,
             this.fecha_mov,
             this.obs_mov});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewProdSalientes.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewProdSalientes.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewProdSalientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewProdSalientes.GridColor = System.Drawing.SystemColors.ButtonShadow;
             this.dataGridViewProdSalientes.Location = new System.Drawing.Point(10, 10);
             this.dataGridViewProdSalientes.Margin = new System.Windows.Forms.Padding(8);
             this.dataGridViewProdSalientes.Name = "dataGridViewProdSalientes";
             this.dataGridViewProdSalientes.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewProdSalientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProdSalientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewProdSalientes.RowHeadersVisible = false;
             this.dataGridViewProdSalientes.RowHeadersWidth = 51;
             this.dataGridViewProdSalientes.RowTemplate.Height = 40;
@@ -714,16 +717,22 @@ namespace ConvertecControlBodega.Views
             // id_producto
             // 
             this.id_producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.id_producto.DefaultCellStyle = dataGridViewCellStyle3;
             this.id_producto.HeaderText = "ID";
             this.id_producto.MinimumWidth = 6;
             this.id_producto.Name = "id_producto";
             this.id_producto.ReadOnly = true;
             this.id_producto.Visible = false;
-            this.id_producto.Width = 125;
+            this.id_producto.Width = 32;
             // 
             // cod_bodega
             // 
             this.cod_bodega.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.cod_bodega.DefaultCellStyle = dataGridViewCellStyle4;
             this.cod_bodega.HeaderText = "Código";
             this.cod_bodega.MinimumWidth = 6;
             this.cod_bodega.Name = "cod_bodega";
@@ -750,6 +759,9 @@ namespace ConvertecControlBodega.Views
             // fecha_mov
             // 
             this.fecha_mov.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle5.Format = "G";
+            dataGridViewCellStyle5.NullValue = null;
+            this.fecha_mov.DefaultCellStyle = dataGridViewCellStyle5;
             this.fecha_mov.HeaderText = "Fecha";
             this.fecha_mov.MinimumWidth = 6;
             this.fecha_mov.Name = "fecha_mov";
@@ -843,13 +855,13 @@ namespace ConvertecControlBodega.Views
         private System.Windows.Forms.Panel panelForm;
         private System.Windows.Forms.Panel panelTabla;
         private System.Windows.Forms.DataGridView dataGridViewProdSalientes;
+        private System.Windows.Forms.Panel panelBottom;
+        private FontAwesome.Sharp.IconButton btnConfirmar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn cod_bodega;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre_prod;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha_mov;
         private System.Windows.Forms.DataGridViewTextBoxColumn obs_mov;
-        private System.Windows.Forms.Panel panelBottom;
-        private FontAwesome.Sharp.IconButton btnConfirmar;
     }
 }

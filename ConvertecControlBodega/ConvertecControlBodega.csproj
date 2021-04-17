@@ -108,19 +108,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\MovimientoBusiness.cs" />
-    <Compile Include="Model\MovimientosDTO.cs" />
-    <Compile Include="Views\IngresoTrabajador.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\IngresoTrabajador.Designer.cs">
-      <DependentUpon>IngresoTrabajador.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\FormSalida.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\FormSalida.Designer.cs">
-      <DependentUpon>FormSalida.cs</DependentUpon>
-    </Compile>
     <Compile Include="Model\BodegaModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -148,6 +135,7 @@
     <Compile Include="Model\Movimiento.cs">
       <DependentUpon>BodegaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\MovimientosDTO.cs" />
     <Compile Include="Model\Producto.cs">
       <DependentUpon>BodegaModel.tt</DependentUpon>
     </Compile>
@@ -159,6 +147,18 @@
     </Compile>
     <Compile Include="Model\Trabajador.cs">
       <DependentUpon>BodegaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IngresoTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\IngresoTrabajador.Designer.cs">
+      <DependentUpon>IngresoTrabajador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormSalida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormSalida.Designer.cs">
+      <DependentUpon>FormSalida.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -178,11 +178,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ConvertecControlBodega_TemporaryKey.pfx" />
     <EntityDeploy Include="Model\BodegaModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BodegaModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ConvertecControlBodega_TemporaryKey.pfx" />
     <None Include="Model\BodegaModel.edmx.diagram">
       <DependentUpon>BodegaModel.edmx</DependentUpon>
     </None>
@@ -226,26 +226,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Logos\739aca6e-bcbd-47ca-97ef-136bc7f406a1.png" />
-    <Content Include="Assets\Logos\b0fd0ba3-6f9b-4370-bb2b-e4c9f8aa40bd.png" />
-    <Content Include="Assets\Logos\convertec_icon.png" />
-    <Content Include="Assets\Logos\convertec_icon_bw.png" />
-    <Content Include="Assets\Logos\favicon.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Logos\image-unavailable.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Logos\image-unavailable_650-350.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Logos\imageedit_5_9066887911.png" />
-    <Content Include="Assets\Logos\logo - copia.png" />
-    <Content Include="Assets\Logos\logo%402x.png" />
-    <Content Include="Assets\Logos\logo.png" />
-    <Content Include="Assets\Logos\logo_completo.jpg" />
-    <Content Include="Assets\Logos\logo_completo.png" />
-    <Content Include="Assets\Logos\logo_completo_bw.png" />
     <Content Include="favicon.ico" />
     <Content Include="Model\BodegaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
