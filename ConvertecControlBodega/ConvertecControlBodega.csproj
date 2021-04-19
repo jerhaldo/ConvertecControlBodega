@@ -69,7 +69,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <Win32Resource>
@@ -77,6 +77,9 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdvancedDataGridView, Version=1.1.25411.9, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DG.AdvancedDataGridView.1.1.25411.9\lib\net40\AdvancedDataGridView.dll</HintPath>
@@ -148,6 +151,12 @@
     <Compile Include="Model\Trabajador.cs">
       <DependentUpon>BodegaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Views\Configuraciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Configuraciones.Designer.cs">
+      <DependentUpon>Configuraciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\IngresoTrabajador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +171,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Views\Configuraciones.resx">
+      <DependentUpon>Configuraciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\IngresoTrabajador.resx">
       <DependentUpon>IngresoTrabajador.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,7 +190,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ConvertecControlBodega_TemporaryKey.pfx" />
     <EntityDeploy Include="Model\BodegaModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BodegaModel.Designer.cs</LastGenOutput>
@@ -213,7 +224,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

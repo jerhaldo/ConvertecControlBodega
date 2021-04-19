@@ -147,6 +147,13 @@ namespace ConvertecControlBodega.Views
             //Cada 30 sec
             this.CheckDBConnection(false);
         }
+
+        private void btnConfiguracion_Click(object sender, EventArgs e)
+        {
+            Views.Configuraciones frmConfig = new Views.Configuraciones();
+            frmConfig.ShowDialog();
+            frmConfig.Dispose();
+        }
     }
 
 }

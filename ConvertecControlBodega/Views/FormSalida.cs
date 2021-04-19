@@ -78,7 +78,7 @@ namespace ConvertecControlBodega.Views
                         if (img != null)
                             try
                             {
-                                pictureBoxProducto.Image = Image.FromFile(@"D:\OneDrive\ConvertecImages\ImgProductos\" + img.image);
+                                pictureBoxProducto.Image = Image.FromFile(Properties.Settings.Default.ImagePath + "/" + img.image);
                             }
                             catch (System.IO.FileNotFoundException)
                             {

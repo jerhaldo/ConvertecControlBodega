@@ -34,27 +34,29 @@ namespace ConvertecControlBodega.Views
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.iconPbDataBase = new FontAwesome.Sharp.IconPictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblId = new System.Windows.Forms.Label();
             this.lblOt = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtOt = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnConfiguracion = new FontAwesome.Sharp.IconButton();
+            this.iconPbDataBase = new FontAwesome.Sharp.IconPictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnConfirmar = new FontAwesome.Sharp.IconButton();
             this.btnCancelar = new FontAwesome.Sharp.IconButton();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPbDataBase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(243)))), ((int)(((byte)(246)))));
+            this.panel1.Controls.Add(this.btnConfiguracion);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.panel2);
@@ -62,58 +64,32 @@ namespace ConvertecControlBodega.Views
             this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(5, 5);
-            this.panel1.Margin = new System.Windows.Forms.Padding(10);
+            this.panel1.Location = new System.Drawing.Point(4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(15);
-            this.panel1.Size = new System.Drawing.Size(661, 409);
+            this.panel1.Padding = new System.Windows.Forms.Padding(11, 12, 11, 12);
+            this.panel1.Size = new System.Drawing.Size(495, 332);
             this.panel1.TabIndex = 0;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.iconPbDataBase);
-            this.panel3.Location = new System.Drawing.Point(381, 41);
+            this.panel3.Location = new System.Drawing.Point(251, 34);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(262, 53);
+            this.panel3.Size = new System.Drawing.Size(196, 43);
             this.panel3.TabIndex = 9;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 10);
-            this.label1.Margin = new System.Windows.Forms.Padding(10);
+            this.label1.Location = new System.Drawing.Point(8, 8);
+            this.label1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 21);
+            this.label1.Size = new System.Drawing.Size(118, 19);
             this.label1.TabIndex = 7;
             this.label1.Text = "Estado Servidor:";
-            // 
-            // iconPbDataBase
-            // 
-            this.iconPbDataBase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(243)))), ((int)(((byte)(246)))));
-            this.iconPbDataBase.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(183)))), ((int)(((byte)(30)))));
-            this.iconPbDataBase.IconChar = FontAwesome.Sharp.IconChar.Database;
-            this.iconPbDataBase.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(183)))), ((int)(((byte)(30)))));
-            this.iconPbDataBase.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPbDataBase.Location = new System.Drawing.Point(220, 10);
-            this.iconPbDataBase.Margin = new System.Windows.Forms.Padding(10);
-            this.iconPbDataBase.Name = "iconPbDataBase";
-            this.iconPbDataBase.Size = new System.Drawing.Size(32, 32);
-            this.iconPbDataBase.TabIndex = 8;
-            this.iconPbDataBase.TabStop = false;
-            this.iconPbDataBase.Click += new System.EventHandler(this.IconPbDataBase_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ConvertecControlBodega.Properties.Resources.logo_completo;
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 15);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(296, 82);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
@@ -126,11 +102,11 @@ namespace ConvertecControlBodega.Views
             this.panel2.Controls.Add(this.lblOt);
             this.panel2.Controls.Add(this.txtId);
             this.panel2.Controls.Add(this.txtOt);
-            this.panel2.Location = new System.Drawing.Point(15, 102);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 15);
+            this.panel2.Location = new System.Drawing.Point(11, 83);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0, 4, 0, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(50);
-            this.panel2.Size = new System.Drawing.Size(631, 212);
+            this.panel2.Padding = new System.Windows.Forms.Padding(38, 41, 38, 41);
+            this.panel2.Size = new System.Drawing.Size(473, 173);
             this.panel2.TabIndex = 5;
             // 
             // lblId
@@ -139,10 +115,10 @@ namespace ConvertecControlBodega.Views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblId.AutoSize = true;
             this.lblId.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblId.Location = new System.Drawing.Point(50, 54);
-            this.lblId.Margin = new System.Windows.Forms.Padding(0, 0, 0, 50);
+            this.lblId.Location = new System.Drawing.Point(38, 44);
+            this.lblId.Margin = new System.Windows.Forms.Padding(0, 0, 0, 41);
             this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(31, 19);
+            this.lblId.Size = new System.Drawing.Size(26, 17);
             this.lblId.TabIndex = 0;
             this.lblId.Text = "ID:";
             // 
@@ -152,10 +128,10 @@ namespace ConvertecControlBodega.Views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblOt.AutoSize = true;
             this.lblOt.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOt.Location = new System.Drawing.Point(50, 136);
+            this.lblOt.Location = new System.Drawing.Point(38, 110);
             this.lblOt.Margin = new System.Windows.Forms.Padding(0);
             this.lblOt.Name = "lblOt";
-            this.lblOt.Size = new System.Drawing.Size(35, 19);
+            this.lblOt.Size = new System.Drawing.Size(30, 17);
             this.lblOt.TabIndex = 1;
             this.lblOt.Text = "OT:";
             // 
@@ -165,12 +141,12 @@ namespace ConvertecControlBodega.Views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtId.Location = new System.Drawing.Point(98, 50);
-            this.txtId.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.txtId.Location = new System.Drawing.Point(74, 41);
+            this.txtId.Margin = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.txtId.MaxLength = 9;
             this.txtId.Name = "txtId";
             this.txtId.ShortcutsEnabled = false;
-            this.txtId.Size = new System.Drawing.Size(481, 28);
+            this.txtId.Size = new System.Drawing.Size(361, 24);
             this.txtId.TabIndex = 0;
             this.txtId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NextFocus);
             this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckNumber);
@@ -181,13 +157,62 @@ namespace ConvertecControlBodega.Views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtOt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtOt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtOt.Location = new System.Drawing.Point(98, 132);
-            this.txtOt.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.txtOt.Location = new System.Drawing.Point(74, 107);
+            this.txtOt.Margin = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.txtOt.MaxLength = 256;
             this.txtOt.Name = "txtOt";
-            this.txtOt.Size = new System.Drawing.Size(481, 28);
+            this.txtOt.Size = new System.Drawing.Size(361, 24);
             this.txtOt.TabIndex = 1;
             this.txtOt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NextFocus);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 30000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btnConfiguracion
+            // 
+            this.btnConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfiguracion.IconChar = FontAwesome.Sharp.IconChar.Cogs;
+            this.btnConfiguracion.IconColor = System.Drawing.Color.DimGray;
+            this.btnConfiguracion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnConfiguracion.IconSize = 25;
+            this.btnConfiguracion.Location = new System.Drawing.Point(453, 42);
+            this.btnConfiguracion.Margin = new System.Windows.Forms.Padding(0);
+            this.btnConfiguracion.Name = "btnConfiguracion";
+            this.btnConfiguracion.Size = new System.Drawing.Size(31, 26);
+            this.btnConfiguracion.TabIndex = 4;
+            this.btnConfiguracion.TabStop = false;
+            this.btnConfiguracion.UseVisualStyleBackColor = true;
+            this.btnConfiguracion.Click += new System.EventHandler(this.btnConfiguracion_Click);
+            // 
+            // iconPbDataBase
+            // 
+            this.iconPbDataBase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(243)))), ((int)(((byte)(246)))));
+            this.iconPbDataBase.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(183)))), ((int)(((byte)(30)))));
+            this.iconPbDataBase.IconChar = FontAwesome.Sharp.IconChar.Database;
+            this.iconPbDataBase.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(183)))), ((int)(((byte)(30)))));
+            this.iconPbDataBase.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPbDataBase.IconSize = 24;
+            this.iconPbDataBase.Location = new System.Drawing.Point(165, 8);
+            this.iconPbDataBase.Margin = new System.Windows.Forms.Padding(8);
+            this.iconPbDataBase.Name = "iconPbDataBase";
+            this.iconPbDataBase.Size = new System.Drawing.Size(24, 26);
+            this.iconPbDataBase.TabIndex = 8;
+            this.iconPbDataBase.TabStop = false;
+            this.iconPbDataBase.Click += new System.EventHandler(this.IconPbDataBase_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ConvertecControlBodega.Properties.Resources.logo_completo;
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(11, 12);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(222, 67);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // btnConfirmar
             // 
@@ -204,12 +229,12 @@ namespace ConvertecControlBodega.Views
             this.btnConfirmar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnConfirmar.IconSize = 30;
             this.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConfirmar.Location = new System.Drawing.Point(501, 339);
-            this.btnConfirmar.Margin = new System.Windows.Forms.Padding(10);
-            this.btnConfirmar.MinimumSize = new System.Drawing.Size(145, 45);
+            this.btnConfirmar.Location = new System.Drawing.Point(375, 275);
+            this.btnConfirmar.Margin = new System.Windows.Forms.Padding(8);
+            this.btnConfirmar.MinimumSize = new System.Drawing.Size(109, 37);
             this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(145, 45);
-            this.btnConfirmar.TabIndex = 3;
+            this.btnConfirmar.Size = new System.Drawing.Size(109, 37);
+            this.btnConfirmar.TabIndex = 2;
             this.btnConfirmar.Text = "Entrar";
             this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnConfirmar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -232,35 +257,31 @@ namespace ConvertecControlBodega.Views
             this.btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCancelar.IconSize = 30;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.Location = new System.Drawing.Point(15, 339);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(10);
-            this.btnCancelar.MinimumSize = new System.Drawing.Size(145, 45);
+            this.btnCancelar.Location = new System.Drawing.Point(11, 275);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(8);
+            this.btnCancelar.MinimumSize = new System.Drawing.Size(109, 37);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(145, 45);
-            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.Size = new System.Drawing.Size(109, 37);
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Salir";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 30000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // IngresoTrabajador
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(671, 419);
+            this.ClientSize = new System.Drawing.Size(503, 340);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "IngresoTrabajador";
-            this.Padding = new System.Windows.Forms.Padding(5);
+            this.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Identificación Salida de Elementos";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.IngresoTrabajador_FormClosed);
@@ -268,10 +289,10 @@ namespace ConvertecControlBodega.Views
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPbDataBase)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPbDataBase)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,5 +313,6 @@ namespace ConvertecControlBodega.Views
         private FontAwesome.Sharp.IconPictureBox iconPbDataBase;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Timer timer1;
+        private FontAwesome.Sharp.IconButton btnConfiguracion;
     }
 }
