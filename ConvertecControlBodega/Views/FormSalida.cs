@@ -23,8 +23,8 @@ namespace ConvertecControlBodega.Views
 
         private void FormSalida_Load(object sender, EventArgs e)
         {
-            //Genera folio a partir de la fecha Ej: 20/01/2021 => 20012021
-            lblFolioValue.Text = DateTime.Now.ToString("ddMMyyyy");
+            //Genera folio a partir de la fecha Ej: 2021/01/20 => 20210120
+            lblFolioValue.Text = DateTime.Now.ToString("yyyyMMdd");
             this.idTrabajador = Int32.Parse(lblIdValue.Text);
             lblNombreValue.Text = $"{MovimientoBusiness.GetNombre(this.idTrabajador).nombre} {MovimientoBusiness.GetNombre(idTrabajador).apellidos}";
         }
@@ -57,7 +57,7 @@ namespace ConvertecControlBodega.Views
             if (!string.IsNullOrWhiteSpace(txtCodigo.Text))
             {
                 //Chequea si existe conexión con la BD
-                if (MovimientoBusiness.CheckDBConnection(true))
+                if (MovimientoBusiness.CheckDBConnection(false, true))
                 {
                     if (MovimientoBusiness.CheckProducto(Int64.Parse(txtCodigo.Text), true))
                     {
@@ -161,7 +161,7 @@ namespace ConvertecControlBodega.Views
                 var result = MessageBox.Show("Desea finalizar y confirmar el proceso?"
                                 , "Confirmación de guardado.", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-                if (result == DialogResult.Yes && MovimientoBusiness.CheckDBConnection(true))
+                if (result == DialogResult.Yes && MovimientoBusiness.CheckDBConnection(false, true))
                 {
                     MovimientoBusiness.InsertSalida(prodSalList);
                     IngresoTrabajador ingreso = new IngresoTrabajador();
