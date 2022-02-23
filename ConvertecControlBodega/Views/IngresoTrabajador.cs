@@ -1,5 +1,6 @@
 ﻿using ConvertecControlBodega.Business;
 using System;
+using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -12,12 +13,12 @@ namespace ConvertecControlBodega.Views
             InitializeComponent();
             this.CancelButton = btnCancelar;
             this.txtId.Select();
+            this.CheckDBConnection(false, true);
         }
 
         private void IngresoTrabajador_Load(object sender, EventArgs e)
         {
-            timer1.Start();
-            this.CheckDBConnection(true);
+
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -33,28 +34,31 @@ namespace ConvertecControlBodega.Views
                 AlertMessage("No se ingresó ninguna ID, por favor ingrese su ID.");
                 txtId.Focus();
             }
-            else if (MovimientoBusiness.CheckId(Int32.Parse(txtId.Text)))   //Validates existent ID
+            else if (MovimientoBusiness.CheckDBConnection(false, true)) //Validates existent ID
             {
-                //Validates empty OT
-                if (string.IsNullOrWhiteSpace(txtOt.Text))
+                switch (MovimientoBusiness.CheckId(Int32.Parse(txtId.Text)))
                 {
-                    AlertMessage("No se ingresó ninguna OT, por favor ingrese un identificador.");
-                    txtOt.Focus();
-                }
-                else
-                {
-                    //Opens Form
-                    Form formSalida = new FormSalida(this.txtId.Text, this.txtOt.Text);
-                    formSalida.Show();
-                    timer1.Stop();
-                    this.Hide();
-                }
+                    case 1:
+                        //Validates empty OT
+                        if (string.IsNullOrWhiteSpace(txtOt.Text))
+                        {
+                            AlertMessage("No se ingresó ninguna OT, por favor ingrese un identificador.");
+                            txtOt.Focus();
+                        }
+                        else
+                        {
+                            //Opens Form
+                            Form formSalida = new FormSalida(this.txtId.Text, this.txtOt.Text);
+                            formSalida.Show();
+                            this.Hide();
+                        }
+                        break;
 
-            }
-            else
-            {
-                AlertMessage("Error, el ID ingresado no se encuentra en el sistema.");
-                txtId.Focus();
+                    case 0:
+                        AlertMessage("Error, el ID ingresado no se encuentra en el sistema.");
+                        txtId.Focus();
+                        break;
+                }
             }
         }
 
@@ -117,35 +121,21 @@ namespace ConvertecControlBodega.Views
             Application.Exit();
         }
 
-        private void CheckDBConnection(bool showError)
+        private void CheckDBConnection(bool showSuccess, bool showError)
         {
-            if (MovimientoBusiness.CheckDBConnection(showError))
+            if (MovimientoBusiness.CheckDBConnection(showSuccess, showError))
             {
                 AutoCompleteTextID();
                 AutoCompleteTextOT();
-                iconPbDataBase.IconColor = Color.FromArgb(138, 183, 30);
+                btnDataBase.IconColor = Color.FromArgb(138, 183, 30);
                 btnConfirmar.Enabled = true;
             }
             else
             {
                 //MessageBox.Show("Error, No se ha podido establecer una conexión con la base de datos.", "Error de conexión.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                iconPbDataBase.IconColor = Color.FromArgb(255, 56, 0);
+                btnDataBase.IconColor = Color.FromArgb(255, 56, 0);
                 this.btnConfirmar.Enabled = false;
             }
-        }
-
-        private void IconPbDataBase_Click(object sender, EventArgs e)
-        {
-            //Forzar chequeo
-            timer1.Stop();
-            this.CheckDBConnection(true);
-            timer1.Start();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            //Cada 30 sec
-            this.CheckDBConnection(false);
         }
 
         private void btnConfiguracion_Click(object sender, EventArgs e)
@@ -153,6 +143,11 @@ namespace ConvertecControlBodega.Views
             Views.Configuraciones frmConfig = new Views.Configuraciones();
             frmConfig.ShowDialog();
             frmConfig.Dispose();
+        }
+
+        private void btnDataBase_Click(object sender, EventArgs e)
+        {
+            this.CheckDBConnection(true, true);
         }
     }
 

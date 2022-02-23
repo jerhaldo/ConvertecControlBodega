@@ -29,27 +29,24 @@ namespace ConvertecControlBodega.Views
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IngresoTrabajador));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnConfiguracion = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnDataBase = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblId = new System.Windows.Forms.Label();
             this.lblOt = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtOt = new System.Windows.Forms.TextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnConfiguracion = new FontAwesome.Sharp.IconButton();
-            this.iconPbDataBase = new FontAwesome.Sharp.IconPictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnConfirmar = new FontAwesome.Sharp.IconButton();
             this.btnCancelar = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPbDataBase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -65,31 +62,78 @@ namespace ConvertecControlBodega.Views
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(4, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.panel1.Margin = new System.Windows.Forms.Padding(8);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.panel1.Size = new System.Drawing.Size(495, 332);
             this.panel1.TabIndex = 0;
             // 
+            // btnConfiguracion
+            // 
+            this.btnConfiguracion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfiguracion.IconChar = FontAwesome.Sharp.IconChar.Cogs;
+            this.btnConfiguracion.IconColor = System.Drawing.Color.DimGray;
+            this.btnConfiguracion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnConfiguracion.IconSize = 25;
+            this.btnConfiguracion.Location = new System.Drawing.Point(453, 38);
+            this.btnConfiguracion.Margin = new System.Windows.Forms.Padding(0);
+            this.btnConfiguracion.Name = "btnConfiguracion";
+            this.btnConfiguracion.Size = new System.Drawing.Size(31, 26);
+            this.btnConfiguracion.TabIndex = 4;
+            this.btnConfiguracion.TabStop = false;
+            this.btnConfiguracion.UseVisualStyleBackColor = true;
+            this.btnConfiguracion.Click += new System.EventHandler(this.btnConfiguracion_Click);
+            // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnDataBase);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.iconPbDataBase);
-            this.panel3.Location = new System.Drawing.Point(251, 34);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Location = new System.Drawing.Point(251, 28);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(196, 43);
+            this.panel3.Padding = new System.Windows.Forms.Padding(10);
+            this.panel3.Size = new System.Drawing.Size(196, 46);
             this.panel3.TabIndex = 9;
+            // 
+            // btnDataBase
+            // 
+            this.btnDataBase.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDataBase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDataBase.IconChar = FontAwesome.Sharp.IconChar.Database;
+            this.btnDataBase.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(183)))), ((int)(((byte)(30)))));
+            this.btnDataBase.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnDataBase.IconSize = 23;
+            this.btnDataBase.Location = new System.Drawing.Point(155, 10);
+            this.btnDataBase.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDataBase.Name = "btnDataBase";
+            this.btnDataBase.Size = new System.Drawing.Size(31, 26);
+            this.btnDataBase.TabIndex = 10;
+            this.btnDataBase.TabStop = false;
+            this.btnDataBase.UseVisualStyleBackColor = true;
+            this.btnDataBase.Click += new System.EventHandler(this.btnDataBase_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 8);
-            this.label1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.label1.Location = new System.Drawing.Point(10, 13);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 19);
             this.label1.TabIndex = 7;
             this.label1.Text = "Estado Servidor:";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ConvertecControlBodega.Properties.Resources.logo_completo;
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(11, 12);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(222, 67);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
@@ -165,55 +209,6 @@ namespace ConvertecControlBodega.Views
             this.txtOt.TabIndex = 1;
             this.txtOt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NextFocus);
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 30000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // btnConfiguracion
-            // 
-            this.btnConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfiguracion.IconChar = FontAwesome.Sharp.IconChar.Cogs;
-            this.btnConfiguracion.IconColor = System.Drawing.Color.DimGray;
-            this.btnConfiguracion.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnConfiguracion.IconSize = 25;
-            this.btnConfiguracion.Location = new System.Drawing.Point(453, 42);
-            this.btnConfiguracion.Margin = new System.Windows.Forms.Padding(0);
-            this.btnConfiguracion.Name = "btnConfiguracion";
-            this.btnConfiguracion.Size = new System.Drawing.Size(31, 26);
-            this.btnConfiguracion.TabIndex = 4;
-            this.btnConfiguracion.TabStop = false;
-            this.btnConfiguracion.UseVisualStyleBackColor = true;
-            this.btnConfiguracion.Click += new System.EventHandler(this.btnConfiguracion_Click);
-            // 
-            // iconPbDataBase
-            // 
-            this.iconPbDataBase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(243)))), ((int)(((byte)(246)))));
-            this.iconPbDataBase.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(183)))), ((int)(((byte)(30)))));
-            this.iconPbDataBase.IconChar = FontAwesome.Sharp.IconChar.Database;
-            this.iconPbDataBase.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(183)))), ((int)(((byte)(30)))));
-            this.iconPbDataBase.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPbDataBase.IconSize = 24;
-            this.iconPbDataBase.Location = new System.Drawing.Point(165, 8);
-            this.iconPbDataBase.Margin = new System.Windows.Forms.Padding(8);
-            this.iconPbDataBase.Name = "iconPbDataBase";
-            this.iconPbDataBase.Size = new System.Drawing.Size(24, 26);
-            this.iconPbDataBase.TabIndex = 8;
-            this.iconPbDataBase.TabStop = false;
-            this.iconPbDataBase.Click += new System.EventHandler(this.IconPbDataBase_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ConvertecControlBodega.Properties.Resources.logo_completo;
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(11, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(222, 67);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // btnConfirmar
             // 
             this.btnConfirmar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -278,10 +273,10 @@ namespace ConvertecControlBodega.Views
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "IngresoTrabajador";
-            this.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Padding = new System.Windows.Forms.Padding(4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Identificación Salida de Elementos";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.IngresoTrabajador_FormClosed);
@@ -289,10 +284,9 @@ namespace ConvertecControlBodega.Views
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPbDataBase)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,9 +304,8 @@ namespace ConvertecControlBodega.Views
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private FontAwesome.Sharp.IconPictureBox iconPbDataBase;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Timer timer1;
         private FontAwesome.Sharp.IconButton btnConfiguracion;
+        private FontAwesome.Sharp.IconButton btnDataBase;
     }
 }

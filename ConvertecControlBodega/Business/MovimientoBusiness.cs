@@ -9,7 +9,7 @@ namespace ConvertecControlBodega.Business
 {
     class MovimientoBusiness
     {
-        public static bool CheckDBConnection(bool showError)
+        public static bool CheckDBConnection(bool showSuccess, bool showError)
         {
             using (var db = new ConvertecBodegaEntities())
             {
@@ -19,13 +19,17 @@ namespace ConvertecControlBodega.Business
                     db.Database.Connection.Open();
                     if (db.Database.Connection.State == ConnectionState.Open)
                     {
-                        System.Console.WriteLine(@"INFO: ConnectionString: " + db.Database.Connection.ConnectionString 
-                            + "\n DataBase: " + db.Database.Connection.Database 
-                            + "\n DataSource: " + db.Database.Connection.DataSource 
-                            + "\n ServerVersion: " + db.Database.Connection.ServerVersion 
-                            + "\n TimeOut: " + db.Database.Connection.ConnectionTimeout);
+                        //System.Console.WriteLine(@"INFO: ConnectionString: " + db.Database.Connection.ConnectionString 
+                        //    + "\n DataBase: " + db.Database.Connection.Database 
+                        //    + "\n DataSource: " + db.Database.Connection.DataSource 
+                        //    + "\n ServerVersion: " + db.Database.Connection.ServerVersion 
+                        //    + "\n TimeOut: " + db.Database.Connection.ConnectionTimeout);
                         db.Database.Connection.Close();
                         Cursor.Current = Cursors.Default;
+                        if (showSuccess)
+                        {
+                            MessageBox.Show("La conexión al servidor funciona de forma correcta.", "Estado de conexión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                         return true;
                     }
                     else
@@ -36,7 +40,7 @@ namespace ConvertecControlBodega.Business
                     Cursor.Current = Cursors.Default;
                     if (showError)
                     {
-                        MessageBox.Show(ex.Message, "Error en conexión con el servidor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Se ha generado un error con la conexión a la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     return false;
                 }
@@ -177,13 +181,14 @@ namespace ConvertecControlBodega.Business
             }
         }
 
-        public static bool CheckId(int id)
+        public static int CheckId(int id)
         {
+            
             using (var db = new ConvertecBodegaEntities())
             {
                 var result = (from t in db.Trabajador
-                              where t.id_trabajador == id
-                              select t.id_trabajador).Any();
+                                where t.id_trabajador == id
+                                select t.id_trabajador).Count();
 
                 return result;
             }
